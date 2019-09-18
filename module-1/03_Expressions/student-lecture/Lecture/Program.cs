@@ -8,28 +8,51 @@ namespace Lecture
         {
             Console.WriteLine("Hello World!");
             // Declare a variable
+            int outerVariable = 5;
+            Console.WriteLine("outerVariable is " + outerVariable);
 
             // Start a statement block
+            {
+                // Print out the variable defined in the outer scope
+                outerVariable += 10;
+                Console.WriteLine("outerVariable from the inner block is " + outerVariable);
 
-            // Print out the variable defined in the outer scope
+                // Declare a variable in the block (inner scope)
+                int innerVariable = 10;
 
-            // Declare a variable in the block (inner scope)
+                // Print out that variable
+                Console.WriteLine("innerVariable is " + innerVariable);
 
-            // Print out that variable
+                // End the statement block
 
-            // End the statement block
+                
+            }
 
             // Print the the variable declared in the block
+            Console.WriteLine("outerVariable is " + outerVariable);
+            //Not possible
+            //Console.WriteLine("innerVariable from the outer block is " + innerVariable);
 
 
 
             // Create and call a method
+            int length = 50;
+            int width = 100;
+            int area = MultipleBy(length, width);
+
+            Console.WriteLine("The area is " + area);
 
 
             // Create and print some boolean expressions
 
 
             Console.ReadKey();
+        }
+
+        static public int MultipleBy(int multiplicand, int multiplier)
+        {
+            int product = multiplicand * multiplier;
+            return product;
         }
     }
 }
