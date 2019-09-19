@@ -25,7 +25,7 @@ namespace Exercises
             {
                 return 2;
             }
-            if ((you <= 2 || date <= 2))
+            else if ((you <= 2 || date <= 2))
             {
                 return 0;
             }
