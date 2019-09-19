@@ -17,7 +17,11 @@ namespace Exercises
          */
         public int[] MaxEnd3(int[] nums)
         {
-            return new int[] { };
+            if (nums[0] > nums[2])
+            {
+                return new int[] { nums[0], nums[0], nums[0]};
+            }
+            return new int[] { nums[2], nums[2], nums[2]};
         }
 
     }

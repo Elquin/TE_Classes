@@ -19,7 +19,10 @@ namespace Lecture
         public int ReturnSumEveryOtherNumber(int[] arrayToLoopThrough)
         {            
             int sum = 0;
-
+            for (int counter = 0; counter < arrayToLoopThrough.Length; counter += 2)
+            {
+                sum += arrayToLoopThrough[counter];
+            }
 
             return sum;
         }
