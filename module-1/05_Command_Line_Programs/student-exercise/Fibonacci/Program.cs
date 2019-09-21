@@ -6,7 +6,15 @@ namespace Fibonacci
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Please enter the Fibonacci number: ");
+            string fibNumber = Console.ReadLine();
+            int intFibNumber = int.Parse(fibNumber);
+
+            for (int i = 0; i < intFibNumber; i++)
+            {
+                Console.WriteLine($"{(i + i)}");
+            }
+            Console.ReadLine();
         }
     }
 }
