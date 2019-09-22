@@ -11,14 +11,16 @@ namespace TempConvert
             Console.Write("Is the temperature in (C)elcius, or (F)arenheit? F? ");
             string celciusOrFarenheit = Console.ReadLine();
             int intTemperature = int.Parse(temperature);
+            int celcius = (int)((intTemperature - 32) / 1.8);
+            int farenheit = (int)((intTemperature * 1.8 + 32));
 
             if ((celciusOrFarenheit == "C") || (celciusOrFarenheit == "c"))
             {
-                Console.WriteLine($"{temperature}C is {(intTemperature * 1.8 + 32)}F");
+                Console.WriteLine($"{temperature}C is {farenheit}F");
             }
             else
             {
-                Console.WriteLine($"{temperature}F is {(intTemperature - 32) / 1.8}C");
+                Console.WriteLine($"{temperature}F is {celcius}C");
             }
 
             Console.ReadLine();

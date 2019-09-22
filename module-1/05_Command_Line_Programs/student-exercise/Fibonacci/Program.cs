@@ -7,12 +7,22 @@ namespace Fibonacci
         static void Main(string[] args)
         {
             Console.Write("Please enter the Fibonacci number: ");
-            string fibNumber = Console.ReadLine();
-            int intFibNumber = int.Parse(fibNumber);
+            int num = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < intFibNumber; i++)
+            int number1 = 0;
+            int number2 = 1;
+            int number3 = 1;
+
+            Console.Write(number1 + " ");
+            Console.Write(number2 + " ");
+
+            while (number3 < num-number1)    
             {
-                Console.WriteLine($"{(i + i)}");
+                number3 = number1 + number2;
+                Console.Write(number3 + " ");
+                number1 = number2;
+                number2 = number3;
+
             }
             Console.ReadLine();
         }

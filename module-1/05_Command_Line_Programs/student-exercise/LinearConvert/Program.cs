@@ -11,14 +11,16 @@ namespace LinearConvert
             Console.WriteLine("Is the measurement in (m)eter, or (f)eet? f: ");
             string meterOrFeet = Console.ReadLine();
             int intLength = int.Parse(userlength);
+            int meter = (int)(intLength * 0.3048);
+            int feet = (int)(intLength * 3.2808399);
 
             if (meterOrFeet == "m" || meterOrFeet == "M")
             {
-                Console.WriteLine($"{intLength}m is {intLength * 3.2808399}f.");
+                Console.WriteLine($"{intLength}m is {feet}f.");
             }
             else if (meterOrFeet == "f" || meterOrFeet == "F")
             {
-                Console.WriteLine($"{intLength}f is {intLength * 0.3048}m");
+                Console.WriteLine($"{intLength}f is {meter}m");
             }
             Console.ReadLine();
         }
