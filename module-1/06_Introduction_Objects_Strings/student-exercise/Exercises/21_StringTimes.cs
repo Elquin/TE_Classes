@@ -15,8 +15,10 @@ namespace Exercises
          StringTimes("Hi", 1) → "Hi"
          */
         public string StringTimes(string str, int n)
-        {
-            return null;
-        }
+        //{
+        //    for (int i = 1; i <= n; i++)
+        //        return ($"{str}");
+        //}
+        //return false;
     }
 }
