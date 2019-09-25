@@ -16,9 +16,7 @@ namespace Exercises
          */
         public string HelloName(string name)
         {
-            Console.Write("Please enter your name: ");
-            string yourName = Console.ReadLine();
-            string greeting = Console.WriteLine($"Hello {yourName}!");
+            string greeting = $"Hello {name}!";
 
             return(greeting);
         }

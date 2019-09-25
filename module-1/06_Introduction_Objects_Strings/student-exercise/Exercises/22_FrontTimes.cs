@@ -17,8 +17,11 @@ namespace Exercises
          */
         public string FrontTimes(string str, int n)
         {
+            if (str.Length < 3)
+            {
+                return null;
+            }
             return null;
         }
-
     }
 }

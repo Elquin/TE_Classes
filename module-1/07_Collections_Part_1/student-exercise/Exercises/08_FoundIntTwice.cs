@@ -17,6 +17,28 @@ namespace Exercises
          */
         public bool FoundIntTwice(List<int> integerList, int intToFind)
         {
+            //setup integer to store count starts at 0
+            //setup up for each to go through each value of integerList
+            //Setup if loop. If (list == intToFind) -> count = count + 1
+            //else if it's not == continue
+            //if count >= 2 = return true, else return false
+            int count = 0;
+            foreach (int number in integerList)
+            {
+                if (number == intToFind)
+                {
+                    count++;
+                }
+                else
+                {
+                    continue;
+                }
+                if (count >= 2)
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 
