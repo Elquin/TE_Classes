@@ -9,7 +9,8 @@ namespace Exercises
     public partial class Exercises
     {
         /*
-         * Given an array of strings, return a Dictionary<string, int> with a key for each different string, with the value the
+         * Given an array of strings, return a Dictionary<string, int> with a 
+         * key for each different string, with the value the
          * number of times that string appears in the array.
          *
          * ** A CLASSIC **
@@ -22,7 +23,22 @@ namespace Exercises
          */
         public Dictionary<string, int> WordCount(string[] words)
         {
-            return null;
+
+            Dictionary<string, int> blackSheep = new Dictionary<string, int>();
+            
+            foreach (string word in words)
+            {
+                if (blackSheep.ContainsKey(word))
+                {
+                    blackSheep[word] = blackSheep[word] + 1;
+                }
+                else
+                {
+                    blackSheep.Add(word, 1);
+                }
+            }
+
+            return blackSheep;
         }
     }
 }

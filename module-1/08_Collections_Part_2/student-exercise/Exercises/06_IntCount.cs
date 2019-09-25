@@ -21,7 +21,21 @@ namespace Exercises
          */
         public Dictionary<int, int> IntCount(int[] ints)
         {
-            return null;
+            Dictionary<int, int> classicCount = new Dictionary<int, int>();
+
+            foreach (int number in ints)
+            {
+                if (classicCount.ContainsKey(number))
+                {
+                    classicCount[number] = classicCount[number] + 1;
+                }
+                else
+                {
+                    classicCount.Add(number, 1);
+                }
+            }
+
+            return classicCount;
         }
     }
 }

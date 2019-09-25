@@ -9,7 +9,8 @@ namespace Exercises
     public partial class Exercises
     {
         /*
-         * Given an array of strings, return a Dictionary<string, Boolean> where each different string is a key and value
+         * Given an array of strings, return a Dictionary<string, Boolean> where each 
+         * different string is a key and value
          * is true only if that string appears 2 or more times in the array.
          *
          * WordMultiple(["a", "b", "a", "c", "b"]) → {"b": true, "c": false, "a": true}
@@ -19,7 +20,21 @@ namespace Exercises
          */
         public Dictionary<string, bool> WordMultiple(string[] words)
         {
-            return null;
+            Dictionary<string, bool> twoOrMore = new Dictionary<string, bool>();
+
+            foreach (string word in words)
+            {
+                if (twoOrMore.ContainsKey(word))
+                {
+                    twoOrMore[word] = true;
+                }
+                else
+                {
+                    twoOrMore.Add(word, false);
+                }
+            }
+
+            return twoOrMore;
         }
     }
 }

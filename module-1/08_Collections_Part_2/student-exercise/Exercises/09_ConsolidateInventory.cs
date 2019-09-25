@@ -9,8 +9,10 @@ namespace Exercises
     public partial class Exercises
     {
         /*
-         * Given two Dictionaries, Dictionary<string, int>, merge the two into a new Dictionary, Dictionary<string, int> where keys in Dictionary2,
-         * and their int values, are added to the int values of matching keys in Dictionary1. Return the new Dictionary.
+         * Given two Dictionaries, Dictionary<string, int>, merge the two into a new Dictionary, 
+         * Dictionary<string, int> where keys in Dictionary2,
+         * and their int values, are added to the int values of matching keys in Dictionary1. 
+         * Return the new Dictionary.
          *
          * Unmatched keys and their int values in Dictionary2 are simply added to Dictionary1.
          *
@@ -21,7 +23,35 @@ namespace Exercises
         public Dictionary<string, int> ConsolidateInventory(Dictionary<string, int> mainWarehouse,
             Dictionary<string, int> remoteWarehouse)
         {
-            return null;
+            Dictionary<string, int> warehouseInventory = new Dictionary<string, int>();
+
+            foreach (string inv in mainWarehouse.Keys)
+            {
+                if (remoteWarehouse.ContainsKey(inv))
+                {
+                    warehouseInventory[inv] = mainWarehouse[inv] + remoteWarehouse[inv];
+                }
+                else
+                {
+                    warehouseInventory[inv] = mainWarehouse[inv];
+                }
+            }
+            foreach (string inv in remoteWarehouse.Keys)
+            {
+                if (mainWarehouse.ContainsKey(inv))
+                {
+                    continue;
+                }
+                else
+                {
+                    warehouseInventory[inv] = remoteWarehouse[inv];
+                }
+            }
+
+
+            
+                return warehouseInventory;
+            
         }
     }
 }

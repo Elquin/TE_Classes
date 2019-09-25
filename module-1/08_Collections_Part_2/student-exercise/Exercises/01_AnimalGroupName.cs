@@ -36,9 +36,31 @@ namespace Exercises
          * AnimalGroupName("elephants") -> "unknown"
          *
          */
+        
+
         public string AnimalGroupName(string animalName)
         {
-            return null;
+            Dictionary<string, string> animals = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                {"Rhino", "Crash" },
+                {"Giraffe", "Tower" },
+                {"Elephant", "Herd" },
+                {"Lion", "Pride" },
+                {"Crow", "Murder" },
+                {"Pigeon", "Kit" },
+                {"Flamingo", "Pat" },
+                {"Deer", "Herd" },
+                {"Dog", "Pack" },
+                {"Crocodile", "Float" },
+            };
+
+            if (animals.ContainsKey(animalName))
+            {
+                //return value here
+                return animals[animalName];
+            }
+            else return "unknown";
+
         }
     }
 }
