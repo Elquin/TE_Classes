@@ -12,8 +12,42 @@ namespace TechElevator.Classes
     */
     public class Dog
     {
-        
 
+        //Constructors
+        //Signature Description
+        //Dog()   Default constructor.All new dogs are awake by default.
 
+        public Dog()
+        {
+            bool IsSleeping = false;
+        }
+
+        // properties
+        public bool IsSleeping { get; private set; }
+
+        //Methods
+
+        public string MakeSound()
+        {
+            
+            if (IsSleeping)
+            {
+                return "Zzzzz...";
+            }
+            else
+            {
+                return "Woof!";
+            }
+        }
+
+        public void Sleep()
+        {
+            IsSleeping = true;
+        }
+
+        public void WakeUp()
+        {
+            IsSleeping = false;
+        }
     }
 }

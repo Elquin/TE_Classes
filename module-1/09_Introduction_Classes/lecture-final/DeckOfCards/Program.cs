@@ -2,23 +2,21 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace DeckOfCards
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Card card = new Card(1, "Hearts",true);
+
+            //Card card = new Card(1,"Hearts",
             //card.IsFaceUp = true;
             //card.Rank = 2;
             //card.Suit = "HEARTS";
 
-            //Console.WriteLine($"Card: {card.Rank} of {card.Suit}, face {(card.IsFaceUp ? "up" : "down") } ");
+            //Console.WriteLine($"Card: {card.Rank} of {card.Suit}, face { (card.IsFaceUp ? "up" : "down") }");
             //Console.ReadLine();
             //return;
-
-
 
             // Let's store all of our cards in a list
             // CODE GOES HERE
@@ -53,7 +51,6 @@ namespace DeckOfCards
                         }
 
                     }
-
 
                     // Get the suit for the new card
                     string suit = "";
@@ -92,12 +89,11 @@ namespace DeckOfCards
                         isFaceUp = true;
                     }
 
-                    Console.WriteLine($"Your card is the {value} of {suit} (face {(isFaceUp ? "up" : "down")})");
+                    //Console.WriteLine($"Your card is the {value} of {suit} (face {(isFaceUp ? "up" : "down")})");
 
                     // Create the card and add to the list
                     Card card = new Card(value, suit, isFaceUp);
                     cards.Add(card);
-
 
                 }
                 else if (input == "2")
@@ -105,7 +101,7 @@ namespace DeckOfCards
                     Console.WriteLine("Displaying all of the cards.");
 
                     // Loop through each of the cards
-                    foreach(Card card in cards)
+                    foreach( Card card in cards)
                     {
                         Console.WriteLine($"{card.Title}, face {(card.IsFaceUp ? "up" : "down")}");
                     }
@@ -128,37 +124,5 @@ namespace DeckOfCards
                 Console.Clear();
             }
         }
-
-        public string Title
-        {
-            get
-            {
-                string title = "";
-                if (Rank > 1 && Rank < 11)
-                {
-                    title += Rank.ToString();
-                }
-                else if (Rank == 1)
-                {
-                    title += "Ace";
-                }
-                else if (Rank == 11)
-                {
-                    title += "Jack";
-                }
-                else if (Rank == 12)
-                {
-                    title += "Queen";
-                }
-                else if (Rank == 13)
-                {
-                    title += "King";
-                }
-                title += "of";
-                return title;
-            }
-        }
-
-        public int Rank { get; private set; }
     }
 }

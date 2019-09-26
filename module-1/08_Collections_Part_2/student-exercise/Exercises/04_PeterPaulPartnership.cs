@@ -35,7 +35,7 @@ namespace Exercises
             }
             return peterPaul;
 
-            return null;
+            
         }
     }
 }
