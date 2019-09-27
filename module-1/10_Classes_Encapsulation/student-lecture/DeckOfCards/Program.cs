@@ -17,20 +17,28 @@ namespace DeckOfCards
             while (true)
             {
                 // Clear the screen
-
+                Console.Clear();
 
 
                 // Take the shrink-wrap off of a new deck of cards
-
+                Deck deck = new Deck();
 
                 // Shuffle the deck
-
+                deck.Shuffle();
 
                 // Deal two hands
 
 
                 // Display the two hands
+                int count = 0;
 
+                for (Card card = deck.DealOne(); card != null; card = deck.DealOne())
+                {
+                    Console.WriteLine(card.Title);
+                    count++;
+                }
+
+                Console.WriteLine($"There were {count} cards in the deck");
 
                 Console.Write("\nType q to Quit.");
                 if (Console.ReadLine().ToLower() == "q")

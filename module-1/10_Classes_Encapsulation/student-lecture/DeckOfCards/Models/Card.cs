@@ -14,8 +14,41 @@ namespace DeckOfCards.Models
         public Card(int rank, string suit)
         {
             this.Rank = rank;
-            Suit = suit;
+            Suit = SetSuit(suit);
             IsFaceUp = false;
+        }
+
+        /// <summary>
+        /// Given a string for the suit, validate and set the suit of this card.
+        /// </summary>
+        /// <param name="suitValue">Hearts, diamonds, spades or clubs</param>
+        /// <returns>The proper name of the suit</returns>
+        private string SetSuit(string suitValue)
+        {
+            string returnValue;
+            if (suitValue.ToLower() == "hearts")
+            {
+                returnValue = "Hearts";
+            }
+            else if (suitValue.ToLower() == "diamonds")
+            {
+                returnValue = "Diamonds";
+            }
+            else if (suitValue.ToLower() == "clubs")
+            {
+                returnValue = "Clubs";
+            }
+            else if (suitValue.ToLower() == "spades")
+            {
+                returnValue = "Spades";
+            }
+            else
+            {
+                // We did not get a valid value
+                throw new ArgumentException("Invalid suit value");
+            }
+            return returnValue;
+
         }
 
         /// <summary>
@@ -27,50 +60,22 @@ namespace DeckOfCards.Models
         public Card(int rank, string suit, bool isFaceUp)
         {
             this.Rank = rank;
-            Suit = suit;
+            Suit = SetSuit(suit);
             IsFaceUp = isFaceUp;
         }
 
         /// <summary>
         /// Value of the card from Ace (1) through King (13)
+        /// This is settable only through the constructor and then will never change
+        /// during the lifetime of this object
         /// </summary>
-        public int Rank { get; set; }
+        public int Rank { get;  }
 
-        private string suit;
         /// <summary>
         /// "Hearts", "Diamonds", "Spades", or "Clubs"
         /// </summary>
-        public string Suit
-        {
-            get
-            {
-                return suit;
-            }
-            set
-            {
-                if (value.ToLower() == "hearts")
-                {
-                    suit = "Hearts";
-                }
-                else if (value.ToLower() == "diamonds")
-                {
-                    suit = "Diamonds";
-                }
-                else if (value.ToLower() == "clubs")
-                {
-                    suit = "Clubs";
-                }
-                else if (value.ToLower() == "spades")
-                {
-                    suit = "Spades";
-                }
-                else
-                {
-                    // We did not get a valid value
-                    throw new ArgumentException("Invalid suit value");
-                }
-            }
-        }
+        public string Suit;
+        
 
         /// <summary>
         /// True if the face of the card is showing
@@ -92,6 +97,9 @@ namespace DeckOfCards.Models
             }
         }
 
+        /// <summary>
+        /// Formal name of the card (e.g., "Ace of Spades")
+        /// </summary>
         public string Title
         {
             get
@@ -121,6 +129,25 @@ namespace DeckOfCards.Models
                 title += Suit;
                 return title;
             }
+        }
+
+        /// <summary>
+        /// Toggles the Face-up state of the card (or in English, turns the card over)
+        /// </summary>
+        public void Flip()
+        {
+            //Toggle the IsFaceUp property
+            IsFaceUp = !IsFaceUp;
+
+            //Long way of doing the above
+            //if (IsFaceUp)
+            //{
+            //    IsFaceUp = false;
+            //}
+            //else
+            //{
+            //    IsFaceUp = true;
+            //}
         }
     }
 }
