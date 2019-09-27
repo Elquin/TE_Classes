@@ -7,7 +7,7 @@ namespace DeckOfCards.Models
     public class Card
     {
         /// <summary>
-        /// Create a new card object
+        /// Creates new Card object
         /// </summary>
         /// <param name="rank">Value of card, from 1-13</param>
         /// <param name="suit">Suit of card</param>
@@ -19,7 +19,7 @@ namespace DeckOfCards.Models
         }
 
         /// <summary>
-        /// creates a new Card and lets you specify up/down
+        /// Creates a new Card and lets you specify face up/down
         /// </summary>
         /// <param name="rank">Value of card, from 1-13</param>
         /// <param name="suit">Suit of card</param>
@@ -38,7 +38,7 @@ namespace DeckOfCards.Models
 
         private string suit;
         /// <summary>
-        /// "Hearts", "Diamonds", "Spade", or "Clubs"
+        /// "Hearts", "Diamonds", "Spades", or "Clubs"
         /// </summary>
         public string Suit
         {
@@ -66,7 +66,7 @@ namespace DeckOfCards.Models
                 }
                 else
                 {
-                    //We did not get a valid value
+                    // We did not get a valid value
                     throw new ArgumentException("Invalid suit value");
                 }
             }
@@ -76,7 +76,6 @@ namespace DeckOfCards.Models
         /// True if the face of the card is showing
         /// </summary>
         public bool IsFaceUp { get; set; }
-
 
         /// <summary>
         /// Derived property showing the color of the card (derived from suit)
@@ -93,6 +92,36 @@ namespace DeckOfCards.Models
             }
         }
 
-        public object Title { get; internal set; }
+        public string Title
+        {
+            get
+            {
+                string title = "";
+                if (Rank > 1&& Rank < 11)
+                {
+                    title += Rank.ToString() + " ";
+                }
+                else if (Rank == 1)
+                {
+                    title += "Ace ";
+                }
+                else if (Rank == 11)
+                {
+                    title += "Jack ";
+                }
+                else if (Rank == 12)
+                {
+                    title += "Queen ";
+                }
+                else if (Rank == 13)
+                {
+                    title += "King ";
+                }
+                title += "of ";
+                title += Suit;
+                return title;
+            }
+        }
+
     }
 }
