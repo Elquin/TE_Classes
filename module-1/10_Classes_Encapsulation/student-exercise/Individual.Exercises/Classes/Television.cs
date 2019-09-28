@@ -10,7 +10,12 @@ namespace Individual.Exercises.Classes
     {
 
         //constructor
-        
+        public Television()
+        {
+            IsOn = false;
+            CurrentChannel = 3;
+            CurrentVolume = 2;
+        }
 
         //Class properties
         public bool IsOn { get; private set; }
@@ -31,9 +36,9 @@ namespace Individual.Exercises.Classes
         }
         public void ChangeChannel(int newChannel)
         {
-            if (IsOn && CurrentChannel > 3 && CurrentChannel < 18)
+            if (IsOn && newChannel > 2 && newChannel < 19)
             {
-                CurrentChannel += newChannel;
+                CurrentChannel = newChannel;
             }
             else
             {
@@ -46,20 +51,20 @@ namespace Individual.Exercises.Classes
             {
                 CurrentChannel++;
             }
-            else if (IsOn && CurrentChannel > 18)
+            else
             {
                 CurrentChannel = 3;
             }
         }
         public void ChannelDown()
         {
-            if (IsOn && CurrentChannel > 2)
+            if (IsOn && CurrentChannel > 3 && CurrentChannel < 19)
             {
                 CurrentChannel--;
             }
-            else if (IsOn && CurrentChannel < 18)
+            else if (IsOn)
             {
-                CurrentChannel = 3;
+                CurrentChannel = 18;
             }
         }
         public void RaiseVolume()
@@ -68,12 +73,28 @@ namespace Individual.Exercises.Classes
             {
                 CurrentVolume++;
             }
+            else if (IsOn)
+            {
+                CurrentVolume = 10;
+            }
+            else
+            {
+                CurrentVolume = CurrentVolume;
+            }
         }
         public void LowerVolume()
         {
             if (IsOn && CurrentVolume > 0)
             {
                 CurrentVolume--;
+            }
+            else if (IsOn)
+            {
+                CurrentVolume = 0;
+            }
+            else
+            {
+                CurrentVolume = CurrentVolume;
             }
         }
 
