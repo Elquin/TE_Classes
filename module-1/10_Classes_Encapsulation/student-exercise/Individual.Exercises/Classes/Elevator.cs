@@ -33,7 +33,7 @@ namespace Individual.Exercises.Classes
         }
         public void GoUp(int desiredFloor)
         {
-            if (DoorIsOpen == false && CurrentLevel < NumberOfLevels && desiredFloor >= CurrentLevel)
+            if (DoorIsOpen == false && CurrentLevel < NumberOfLevels && desiredFloor > CurrentLevel)
             {
                 CurrentLevel++;
             }
