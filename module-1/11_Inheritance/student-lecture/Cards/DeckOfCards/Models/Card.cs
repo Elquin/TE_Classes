@@ -6,6 +6,24 @@ namespace DeckOfCards.Models
 {
     public class Card
     {
+
+        static private Dictionary<int, string> faceValues = new Dictionary<int, string>()
+        {
+            {1, "Ace" },
+            {2, "Two" },
+            {3, "Three" },
+            {4, "Four" },
+            {5, "Five" },
+            {6, "Six" },
+            {7, "Seven" },
+            {8, "Eight" },
+            {9, "Nine" },
+            {10, "Ten" },
+            {11, "Jack" },
+            {12, "Queen" },
+            {13, "King" },
+        };
+
         /// <summary>
         /// Creates new Card object
         /// </summary>
@@ -29,6 +47,7 @@ namespace DeckOfCards.Models
             this.Rank = rank;
             Suit = SetSuit(suit);
             IsFaceUp = isFaceUp;
+
         }
 
         /// <summary>
@@ -104,30 +123,7 @@ namespace DeckOfCards.Models
         {
             get
             {
-                string title = "";
-                if (Rank > 1&& Rank < 11)
-                {
-                    title += Rank.ToString() + " ";
-                }
-                else if (Rank == 1)
-                {
-                    title += "Ace ";
-                }
-                else if (Rank == 11)
-                {
-                    title += "Jack ";
-                }
-                else if (Rank == 12)
-                {
-                    title += "Queen ";
-                }
-                else if (Rank == 13)
-                {
-                    title += "King ";
-                }
-                title += "of ";
-                title += Suit;
-                return title;
+                return $"{Card.faceValues[Rank]} of {Suit}";
             }
         }
 

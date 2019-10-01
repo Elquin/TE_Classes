@@ -5,11 +5,8 @@ namespace Shapes
 {
     class Program
     {
-        // TODO 01 Create a Shape class with the appropriate methods and properties
-        //      Properties: Color, IsFilled, Area, Perimeter
-        //      Methods: Draw, ToString
+        
         // TODO 02 Create a subclass for Circle
-        // TODO 03 Create a subclass for Rectangle
 
 
         /* *

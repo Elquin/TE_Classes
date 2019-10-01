@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shapes.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace Shapes
         /// </summary>
         /// 
         // TODO 10 Create the private list of shapes
+        private List<Shape2D> shapes = new List<Shape2D>();
 
         #endregion
 
@@ -81,7 +83,7 @@ Please choose an option: ");
         /// </summary>
         private void ClearCanvas()
         {
-            // TODO 11 Clear the list of shapes
+            shapes.Clear();
 
             Success("Canvas was cleared");
         }
@@ -93,6 +95,11 @@ Please choose an option: ");
         {
             Success("Shapes:");
 
+            foreach (Shape2D shape in shapes)
+            {
+                Console.WriteLine($"\t{shape}");
+            }
+
             // TODO 12 Display the list of shapes
 
         }
@@ -102,8 +109,21 @@ Please choose an option: ");
         /// </summary>
         private void NewRectangle()
         {
-            // TODO 13 Prompt the user for Width, Height, Color and Filled, then add a Rectangle
 
+            int width = GetPositiveInt("Width: ", 1, 30);
+            int height = GetPositiveInt("Height: ", 1, 30);
+            ConsoleColor color = GetColor("Color: ");
+            bool isFilled = GetBool("Do you want the shape filled? ");
+
+            Rectangle rect = new Rectangle()
+            {
+                Width = width,
+                Height = height,
+                Color = color,
+                IsFilled = isFilled,
+            };
+
+            shapes.Add(rect);
 
             Success("New Rectangle was added");
 
@@ -115,7 +135,18 @@ Please choose an option: ");
         private void NewCircle()
         {
             // TODO 14 Prompt the user for Radius, Color and Filled, then create a Circle
+            int radius = GetPositiveInt("Radius: ", 1, 15);
+            ConsoleColor color = GetColor("Color: ");
+            bool isFilled = GetBool("Do you want the shape filled? ");
 
+            Circle circle = new Circle()
+            {
+                Color = color,
+                IsFilled = isFilled,
+                Radius = radius,
+            };
+
+            shapes.Add(circle);
 
             Success("New Circle was added");
         }
@@ -125,7 +156,10 @@ Please choose an option: ");
         /// </summary>
         public void DrawCanvas()
         {
-            // TODO 15 Loop through the shapes and Draw each one.
+            foreach (Shape2D shape in shapes)
+            {
+                shape.Draw();
+            }
 
             Success("*** End of Display ***");
         }

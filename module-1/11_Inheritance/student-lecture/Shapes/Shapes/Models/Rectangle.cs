@@ -4,16 +4,16 @@ using System.Text;
 
 namespace Shapes.Models
 {
-    public class Circle : Shape2D
+    public class Rectangle : Shape2D
     {
-        #region Properties
-        public int Radius { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
         public override int Area
         {
             get
             {
-                return (int)(Math.PI * Radius * Radius);
+                return Width * Height;
             }
         }
 
@@ -21,47 +21,38 @@ namespace Shapes.Models
         {
             get
             {
-                return (int)(2 * Math.PI * Radius);
+                return (2 * Height) + (2 * Width);
             }
         }
-        #endregion
-
-        #region Constructors
-        public Circle(int radius, ConsoleColor color, bool isFilled)
-        {
-            Radius = radius;
-            Color = color;
-            IsFilled = isFilled;
-        }
-
-        #endregion
 
         public override void Draw()
         {
             SetConsoleColor();
 
             #region Do the math to calculate which symbols to draw
-            double thickness = .3;
+            double thickness = .8;
             char symbol = '*';
             char fillSymbol = '*';
 
-            double rIn = this.Radius - thickness;
-            double rOut = this.Radius + thickness;
-            for (int y = this.Radius; y >= -rOut; --y)
+            // Do the math to calculate which symbols to draw
+            for (int y = 0; y < this.Height; y++)
             {
-                //                for (double x = -radius; x < rOut; x += .5)
-                for (double x = -this.Radius; x <= rOut; x += .4)
+                for (double x = 0; x < this.Width; x += .4)
                 {
-                    double value = x * x + y * y;
-                    if (value >= rIn * rIn && value <= rOut * rOut)
+                    if (y < thickness || y >= (this.Height - 1 - thickness) ||
+                        x < thickness || x >= (this.Width - thickness))
                     {
                         Console.Write(symbol);
                     }
                     else
                     {
-                        if (this.IsFilled && value <= rIn * rIn)
+                        if (this.IsFilled &&
+                            y >= thickness && y < (this.Height - thickness) &&
+                        x >= thickness && x < (this.Width - thickness)
+                            )
                         {
                             Console.Write(fillSymbol);
+
                         }
                         else
                         {
@@ -74,13 +65,12 @@ namespace Shapes.Models
             #endregion
 
             ResetConsoleColor();
-        }
 
+        }
 
         public override string ToString()
         {
-            return $"A {Color} Circle (radius {Radius}) that is{(IsFilled ? "" : " not")} filled.";
-
+            return $"A {Color} Rectangle that is{(IsFilled ? "" : " not")} filled.";
         }
 
     }

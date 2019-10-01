@@ -5,13 +5,12 @@ using System.Text;
 namespace Shapes.Models
 {
     /// <summary>
-    /// A two-dimensional shape the can be drawn on the screen
+    /// A two-dimensional shape that can be drawn on the screen
     /// </summary>
-    public class Shape2D : IDrawable
+    public class Shape2D
     {
         public bool IsFilled { get; set; }
         public ConsoleColor Color { get; set; }
-
         virtual public int Area
         {
             get
@@ -19,7 +18,6 @@ namespace Shapes.Models
                 return 0;
             }
         }
-
         virtual public int Perimeter
         {
             get
@@ -53,7 +51,6 @@ namespace Shapes.Models
             Console.ForegroundColor = savedColor;
         }
         #endregion
-
 
     }
 }

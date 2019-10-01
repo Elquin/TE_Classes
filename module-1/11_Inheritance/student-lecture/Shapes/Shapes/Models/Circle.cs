@@ -6,14 +6,13 @@ namespace Shapes.Models
 {
     public class Circle : Shape2D
     {
-        #region Properties
         public int Radius { get; set; }
-
+        
         public override int Area
         {
             get
             {
-                return (int)(Math.PI * Radius * Radius);
+                return (int) (Math.PI * Radius * Radius);
             }
         }
 
@@ -21,20 +20,9 @@ namespace Shapes.Models
         {
             get
             {
-                return (int)(2 * Math.PI * Radius);
+                return (int) (2 * Math.PI * Radius);
             }
         }
-        #endregion
-
-        #region Constructors
-        public Circle(int radius, ConsoleColor color, bool isFilled)
-        {
-            Radius = radius;
-            Color = color;
-            IsFilled = isFilled;
-        }
-
-        #endregion
 
         public override void Draw()
         {
@@ -74,13 +62,12 @@ namespace Shapes.Models
             #endregion
 
             ResetConsoleColor();
-        }
 
+        }
 
         public override string ToString()
         {
-            return $"A {Color} Circle (radius {Radius}) that is{(IsFilled ? "" : " not")} filled.";
-
+            return $"A {Color} Circle that is{(IsFilled ? "" : " not")} filled.";
         }
 
     }
