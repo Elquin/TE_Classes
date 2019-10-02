@@ -36,11 +36,11 @@ namespace PostageCalculator
             {
                 if (weightLbOz == "O" || weightLbOz == "o")
                 {
-                    Console.WriteLine($"{entry.TypeOfDelivery} + {entry.CalculateRate(distanceInt, packageWeightDouble)}");
+                    Console.WriteLine($"{entry.TypeOfDelivery}  {entry.CalculateRate(distanceInt, packageWeightDouble).ToString("C").PadLeft(15)}");
                 }
                 else if (weightLbOz == "P" || weightLbOz == "p")
                 {
-                    Console.WriteLine($"{entry.TypeOfDelivery} + {entry.CalculateRate(distanceInt, packageWeightDouble*16)}");
+                    Console.WriteLine($"{entry.TypeOfDelivery}  {entry.CalculateRate(distanceInt, packageWeightDouble*16).ToString("C").PadLeft(15)}");
                 }
                 else Console.WriteLine("Please enter \"O\" or \"P\": ");
             }

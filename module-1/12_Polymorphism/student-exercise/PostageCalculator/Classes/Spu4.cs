@@ -15,7 +15,7 @@ namespace PostageCalculator.Classes
 
         public string TypeOfDelivery
         {
-            get { return "SPU (4-Day Ground)"; }
+            get { return "SPU (4-Day Ground)       "; }
         }
     }
 }

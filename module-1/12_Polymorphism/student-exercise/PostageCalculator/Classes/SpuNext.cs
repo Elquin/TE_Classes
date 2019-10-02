@@ -15,7 +15,7 @@ namespace PostageCalculator.Classes
 
         public string TypeOfDelivery
         {
-            get { return "SPU (Next Day)"; }
+            get { return "SPU (Next Day)            "; }
         }
     }
 }
