@@ -13,7 +13,7 @@ namespace Shapes.Models
         {
             get
             {
-                return (int)(Math.PI * Radius * Radius);
+                return (int)Math.Round(Math.PI * Radius * Radius);
             }
         }
 
@@ -21,7 +21,7 @@ namespace Shapes.Models
         {
             get
             {
-                return (int)(2 * Math.PI * Radius);
+                return (int)Math.Round(2 * Math.PI * Radius);
             }
         }
         #endregion

@@ -8,14 +8,14 @@ namespace PostageCalculator.Classes
     {
         public double CalculateRate(int distance, double weight)
         {
-            double rate = (weight * 0.075) * distance;
+            double rate = ((weight * 0.075) / 16) * distance;
             return rate;
 
         }
 
         public string TypeOfDelivery
         {
-            get { return "SPU (Next Day)            "; }
+            get { return "SPU (Next Day)"; }
         }
     }
 }

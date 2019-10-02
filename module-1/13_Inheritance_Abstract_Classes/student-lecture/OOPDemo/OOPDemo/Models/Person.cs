@@ -26,6 +26,11 @@ namespace OOPDemo.Models
             Income = income;
         }
 
+        public override string ToString()
+        {
+            return $"{LastName}, {FirstName}";
+        }
+
 
     }
 }

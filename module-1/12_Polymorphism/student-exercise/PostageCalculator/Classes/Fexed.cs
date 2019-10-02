@@ -27,7 +27,7 @@ namespace PostageCalculator.Classes
 
         public string TypeOfDelivery
         {
-            get { return "FexEd                       "; }
+            get { return "FexEd"; }
         }
     }
 }

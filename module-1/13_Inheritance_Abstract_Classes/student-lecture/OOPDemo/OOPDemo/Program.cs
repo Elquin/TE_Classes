@@ -58,7 +58,7 @@ namespace OOPDemo
         {
             foreach (Person p in people)
             {
-                Console.WriteLine($"{p.LastName} {p.FirstName} {p.BirthDate} {p.Age} {p.Income}");
+                Console.WriteLine($"{p,-32} {p.BirthDate,-10:d} {p.Age,4} {p.Income,15:C}");
             }
         }
     }
