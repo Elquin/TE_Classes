@@ -21,6 +21,9 @@ namespace Exercises.Tests
         [DataRow(18, true)]
         [DataRow(19, true)]
         [DataRow(20, false)]
+        [DataRow(39, true)]
+        [DataRow(58, true)]
+        [DataRow(60, false)]
         public void IsLessThanMultipleOf20(int a, bool expectedResult)
         {
             //Arrange
