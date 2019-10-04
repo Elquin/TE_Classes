@@ -19,7 +19,7 @@ namespace Exercises.Tests
 
             //Assert
             //CollectionAssert.AreEqual(new string[] { "\"ba\" : 2", "\"black\": 1", "\"sheep\": 1" }, actualResult);
-            Assert.AreEqual(new Dictionary<string, int>  { "ba" : 2, "black": 1, "sheep": 1 } , actualResult);
+            CollectionAssert.AreEqual(new Dictionary<string, int> { { "ba", 2 }, { "black", 1 }, { "sheep", 1 } } , actualResult);
 
         }
     }
