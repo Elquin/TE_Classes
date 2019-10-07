@@ -18,14 +18,15 @@ namespace Exercises
             {
                 return "FizzBuzz"; //3rd step. Added condition with most restrictions to test for divisible by 3 and 5.
             }
-            else if (numberToTest % 3 == 0) 
-            {
-                return "Fizz"; //returns first condition for divisible by 3
-            }
-            else if (numberToTest % 5 == 0)
+            else if (numberToTest % 5 == 0 || numberToTest.ToString().Contains("5")) //Part 2. Refactored code to meet requirements. 
             {
                 return "Buzz"; //returns second condition for divisible by 5
             }
+            else if (numberToTest % 3 == 0 || numberToTest.ToString().Contains("3")) 
+            {
+                return "Fizz"; //returns first condition for divisible by 3
+            }
+            
             else
             {
                 return $"{numberToTest}";
