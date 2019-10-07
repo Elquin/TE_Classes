@@ -10,7 +10,11 @@ namespace Exercises
     {
         public string ToFizzBuzz(int numberToTest)
         {
-            if (numberToTest % 3 == 0 && numberToTest % 5 == 0)
+            if (numberToTest <= 0 || numberToTest >= 100)
+            {
+                return "";
+            }
+            else if (numberToTest % 3 == 0 && numberToTest % 5 == 0)
             {
                 return "FizzBuzz"; //3rd step. Added condition with most restrictions to test for divisible by 3 and 5.
             }
@@ -24,8 +28,19 @@ namespace Exercises
             }
             else
             {
-                return "";
+                return $"{numberToTest}";
             }
+
+
+
+            //else if (numberToTest > 0 && numberToTest <= 100)
+            //{
+            //    return $"{numberToTest}";
+            //}
+            //else
+            //{
+            //    return "";
+            //}
         }
     }
 }
