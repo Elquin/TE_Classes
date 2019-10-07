@@ -10,7 +10,7 @@ namespace Exercises
     {
         public string ToFizzBuzz(int numberToTest)
         {
-            if (numberToTest <= 0 || numberToTest >= 100)
+            if (numberToTest <= 0 || numberToTest > 100)
             {
                 return "";
             }
