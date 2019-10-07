@@ -14,6 +14,7 @@ namespace Exercises.Tests
      [DataRow(3, "Fizz")] //first condition for divisible by 3
      [DataRow(5, "Buzz")] //2nd condition for divisible by 5
      [DataRow(15, "FizzBuzz")] //3rd condition for divisible by 3 AND 5
+     [DataRow(22, "22")] //4th step. Testing for NOT divisible by 3 or 5 between 1-100.
      public void FizzBuzzOne(int numberToTest, string expectedResult)
      {
          //Arrange
