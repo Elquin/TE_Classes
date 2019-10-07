@@ -8,6 +8,16 @@ namespace Exercises
 {
     public class KataFizzBuzz
     {
-
+        public string ToFizzBuzz(int numberToTest)
+        {
+            if (numberToTest == 1)
+            {
+                return "1";
+            }
+            else
+            {
+                return "";
+            }
+        }
     }
 }
