@@ -11,7 +11,8 @@ namespace Exercises.Tests
     public class KataFizzBuzzTests
     {
      [DataTestMethod]
-     [DataRow(1, "1")]
+     [DataRow(3, "Fizz")]
+     [DataRow(5, "Buzz")]
      public void FizzBuzzOne(int numberToTest, string expectedResult)
      {
          //Arrange

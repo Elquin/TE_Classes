@@ -10,14 +10,15 @@ namespace Exercises
     {
         public string ToFizzBuzz(int numberToTest)
         {
-            if (numberToTest == 1)
+            if (numberToTest % 3 == 0)
             {
-                return "1";
+                return "Fizz";
             }
-            else
+            else if (numberToTest % 5 == 0)
             {
-                return "";
+
             }
+            
         }
     }
 }
