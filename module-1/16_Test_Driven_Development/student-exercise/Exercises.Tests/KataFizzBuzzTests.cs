@@ -10,6 +10,23 @@ namespace Exercises.Tests
     [TestClass()]
     public class KataFizzBuzzTests
     {
+     [DataTestMethod]
+     [DataRow(1, "1")]
+     public void FizzBuzzOne(int numberToTest, string expectedResult)
+     {
+         //Arrange
+         // Create a new KataFizzBuzz Object
+         KataFizzBuzz number = new KataFizzBuzz();
+
+         //Act
+         string actualResult = number.ToFizzBuzz(numberToTest);
+
+         //Assert
+         Assert.AreEqual(expectedResult, actualResult);
+
+     }
+            
         
+
     }
 }
