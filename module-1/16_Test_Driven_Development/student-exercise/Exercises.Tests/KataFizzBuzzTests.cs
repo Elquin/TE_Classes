@@ -16,7 +16,8 @@ namespace Exercises.Tests
      [DataRow(15, "FizzBuzz")] //3rd condition for divisible by 3 AND 5
      [DataRow(22, "22")] //4th step. Testing for NOT divisible by 3 or 5 between 1-100.
      [DataRow(0, "")] //5th step. Added condition that is outside of the range 1-100.
-     public void FizzBuzzOne(int numberToTest, string expectedResult)
+     [DataRow(35, "FizzBuzz")] //Part 2If the number is divisible by 3 AND 5, OR contains a 3 AND 5, convert the number to the string, "FizzBuzz"
+        public void FizzBuzzOne(int numberToTest, string expectedResult)
      {
          //Arrange
          // Create a new KataFizzBuzz Object
