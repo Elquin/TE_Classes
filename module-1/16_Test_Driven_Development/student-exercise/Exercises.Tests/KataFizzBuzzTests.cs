@@ -11,8 +11,9 @@ namespace Exercises.Tests
     public class KataFizzBuzzTests
     {
      [DataTestMethod]
-     [DataRow(3, "Fizz")]
-     [DataRow(5, "Buzz")]
+     [DataRow(3, "Fizz")] //first condition for divisible by 3
+     [DataRow(5, "Buzz")] //2nd condition for divisible by 5
+     [DataRow(15, "FizzBuzz")] //3rd condition for divisible by 3 AND 5
      public void FizzBuzzOne(int numberToTest, string expectedResult)
      {
          //Arrange

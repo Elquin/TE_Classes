@@ -10,13 +10,13 @@ namespace Exercises
     {
         public string ToFizzBuzz(int numberToTest)
         {
-            if (numberToTest % 3 == 0)
+            if (numberToTest % 3 == 0) 
             {
-                return "Fizz";
+                return "Fizz"; //returns first condition for divisible by 3
             }
             else if (numberToTest % 5 == 0)
             {
-
+                return "Buzz"; //returns second condition for divisible by 5
             }
             
         }
