@@ -14,7 +14,7 @@ namespace Exercises
             {
                 return "";
             }
-            else if (numberToTest % 3 == 0 && numberToTest % 5 == 0 || numberToTest.ToString().Contains("3") && numberToTest.ToString().Contains("5"))
+            else if (numberToTest % 3 == 0 && numberToTest % 5 == 0 || numberToTest.ToString().Contains("3") && numberToTest.ToString().Contains("5")) //Added Part 2 to pass test.
             {
                 return "FizzBuzz"; //3rd step. Added condition with most restrictions to test for divisible by 3 and 5.
             }
