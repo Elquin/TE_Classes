@@ -17,6 +17,9 @@ namespace WordSearch
                 //1. Ask the user for the search string
                 Console.Write("Please enter a word to search: ");
                 string wordInput = Console.ReadLine();
+                //4. case sensitive?
+                Console.WriteLine("Should the search be case sensitive? (Y/N)");
+                string caseSensitive = Console.ReadLine();
                 //2. Ask the user for the file path
                 Console.WriteLine("Please enter the file path: ");
                 string filePathInput = Console.ReadLine();
@@ -25,17 +28,31 @@ namespace WordSearch
                 //3. Open the file
                 using (StreamReader stream = new StreamReader(filePathInput))
                 {
-                    int counter = 1;
+                    int counter = 1; //Counter to keep track of current line.
 
                     while (!stream.EndOfStream)
                     {
                         string line = stream.ReadLine();
-                        if (line.Contains(wordInput))
+                        if (caseSensitive == "Y" || caseSensitive == "y")
                         {
-                            Console.WriteLine($"{counter}) {line}");
+                            if (line.Contains(wordInput))
+                            {
+                                Console.WriteLine($"{counter}) {line}");
+                            }
+                            counter++;
                         }
-                        counter++;
-
+                        else if(caseSensitive == "N" || caseSensitive == "n")
+                        {
+                            if (line.Contains(wordInput, StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine($"{counter}) {line}");
+                            }
+                            counter++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect selection.");
+                        }
                     }
                 }
             }
