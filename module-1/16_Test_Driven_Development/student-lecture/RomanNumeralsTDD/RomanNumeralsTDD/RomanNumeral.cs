@@ -27,7 +27,11 @@ namespace RomanNumeralsTDD
 
             string result = "";
 
-            foreach (int key in numerals.Keys)
+            List<int> numeralsKeys = new List<int>(numerals.Keys);
+            numeralsKeys.Sort();
+            numeralsKeys.Reverse();
+
+            foreach (int key in numeralsKeys)
             {
                 while (number >= key)
                 {
