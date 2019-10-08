@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace WordSearch
 {
@@ -18,26 +19,24 @@ namespace WordSearch
                 string wordInput = Console.ReadLine();
                 //2. Ask the user for the file path
                 Console.WriteLine("Please enter the file path: ");
-                string input = Console.ReadLine();
+                string filePathInput = Console.ReadLine();
 
-                //C: \Users\RHolland\git\robertholland - c\module - 1\17_FileIO_Reading_in\student - exercise\alices_adventures_in_wonderland.txt
+                //C:\Users\RHolland\git\robertholland-c\module-1\17_FileIO_Reading_in\student-exercise\alices_adventures_in_wonderland.txt
                 //3. Open the file
-                using (StreamReader stream = new StreamReader(input))
+                using (StreamReader stream = new StreamReader(filePathInput))
                 {
-                    int numberOfWords = 0;
-                    int numberOfSentences = 0;
+                    int counter = 1;
+
                     while (!stream.EndOfStream)
                     {
-                        string wholeDoc = stream.ReadToEnd();
-                        char[] delimiterChars = { '.', '!', '?' };
-                        string[] wordsSplit = wholeDoc.Split(" ");
-                        string[] sentenceSplit = wholeDoc.Split(delimiterChars);
-                        numberOfWords += wordsSplit.Length;
-                        numberOfSentences += sentenceSplit.Length;
+                        string line = stream.ReadLine();
+                        if (line.Contains(wordInput))
+                        {
+                            Console.WriteLine($"{counter}) {line}");
+                        }
+                        counter++;
 
                     }
-                    Console.WriteLine($"Number of words equals: {numberOfWords}");
-                    Console.WriteLine($"Number of sentences equals: {numberOfSentences}");
                 }
             }
             catch (Exception e)
