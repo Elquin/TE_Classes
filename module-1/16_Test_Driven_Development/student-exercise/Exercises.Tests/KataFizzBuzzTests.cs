@@ -19,7 +19,7 @@ namespace Exercises.Tests
      [DataRow(35, "FizzBuzz")] //Part 2If the number is divisible by 3 AND 5, OR contains a 3 AND 5, convert the number to the string, "FizzBuzz"
      [DataRow(51, "Buzz")]//Part 2. If the number is divisible by 5, OR contains a 5, convert the number to the string, "Buzz".
      [DataRow(13, "Fizz")]//Part 2. If the number is divisible by 3, OR contains a 3, convert the number to the string, "Fizz".
-        public void FizzBuzzOne(int numberToTest, string expectedResult)
+     public void FizzBuzzOne(int numberToTest, string expectedResult)
      {
          //Arrange
          // Create a new KataFizzBuzz Object
@@ -32,8 +32,5 @@ namespace Exercises.Tests
          Assert.AreEqual(expectedResult, actualResult);
 
      }
-            
-        
-
     }
 }
