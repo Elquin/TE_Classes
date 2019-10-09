@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace FizzWriter
 {
@@ -6,7 +7,15 @@ namespace FizzWriter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string outPath = "..\\..\\..\\..\\FizzBuzz.txt";
+            using (StreamWriter sw = new StreamWriter(outPath))
+            {
+                for (int i = 0; i <= 300; i++)
+                {
+                    sw.WriteLine();
+                }
+                
+            }
         }
     }
 }

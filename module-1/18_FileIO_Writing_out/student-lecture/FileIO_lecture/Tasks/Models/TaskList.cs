@@ -7,7 +7,8 @@ namespace Tasks.Models
 {
     public class TaskList
     {
-        public string Path { get; set; }
+        private const char separator = '|';
+        public string Path { get; }
         private List<Task> taskList { get; set; }
         public int Count
         {
@@ -34,12 +35,46 @@ namespace Tasks.Models
             this.taskList = new List<Task>();
 
             // TODO: Load tasks from the file (in Path), parse and create Tasks, add them to the list
+            try
+            {
+                using (StreamReader sr = new StreamReader(Path))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string inputLine = sr.ReadLine();
+                        string[] fields = inputLine.Split(separator);
+                        Task task = new Task(fields[0], DateTime.Parse(fields[1]), bool.Parse(fields[2]));
+                        taskList.Add(task);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"There was an ERROR loading the file {Path}. The error was {ex.Message}");
+            }
+
 
         }
 
         public void Save()
         {
             // Open the file at Path, and write all the tasks there
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(this.Path, false))
+                {
+                    foreach (Task task in taskList)
+                    {
+                        string outputData = string.Join(separator, task.TaskName, task.DueDate, task.Completed);
+                        writer.WriteLine(outputData);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Report to the user that there was an error
+                Console.WriteLine($"ERROR saving task list: {ex.Message}. Please call support at 867-5309");
+            }
         }
 
         public void AddTask(Task newTask)

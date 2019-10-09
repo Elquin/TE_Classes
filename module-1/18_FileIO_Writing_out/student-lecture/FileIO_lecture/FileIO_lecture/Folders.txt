@@ -1,0 +1,15 @@
+Subfolders of c:\Git at 10/9/2019 10:27:28 AM:
+	c:\Git\Git
+	c:\Git\NoGit
+Subfolders of c:\Git at 10/9/2019 10:28:09 AM:
+	c:\Git\Git
+	c:\Git\NoGit
+Subfolders of c:\Git at Wednesday, October 9, 2019 10:28:50 AM:
+	c:\Git\Git
+	c:\Git\NoGit
+Subfolders of c:\Git at 10/9/2019:
+	c:\Git\Git
+	c:\Git\NoGit
+Subfolders of c:\Git at Wednesday, October 9, 2019 2:33 PM:
+	c:\Git\Git
+	c:\Git\NoGit
