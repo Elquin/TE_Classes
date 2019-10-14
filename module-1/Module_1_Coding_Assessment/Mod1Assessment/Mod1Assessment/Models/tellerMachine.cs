@@ -19,17 +19,7 @@ namespace Mod1Assessment.Models
         public string Manufacturer { get; set; }
         public decimal Deposits { get; set; }
         public decimal Withdrawals { get; set; }
-        //public decimal Balance
-        //{
-        //    get
-        //    {
-        //        return this.Balance;
-        //    }
-        //    set
-        //    {
-        //        Balance = Deposits - Withdrawals;
-        //    }
-        //}
+       
 
         public decimal Balance()
         {
