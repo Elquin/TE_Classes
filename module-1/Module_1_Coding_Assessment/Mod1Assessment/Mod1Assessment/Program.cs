@@ -22,6 +22,7 @@ namespace Mod1Assessment
             //Console.WriteLine(newTellerMachine.CardValid(cardNumber));
             //Console.WriteLine($"ATM - {manufacturer} - {newTellerMachine.Balance()}");
             //Using StreamReader to read in contents of csv file and assing as string line.
+            decimal totalSum = 0;
             using (StreamReader st = new StreamReader(@"C:\Users\RHolland\git\robertholland-c\module-1\Module_1_Coding_Assessment\Mod1Assessment\Mod1Assessment\Data\TellerInput.csv"))
             {
                 while (!st.EndOfStream)
@@ -42,9 +43,11 @@ namespace Mod1Assessment
 
                     Console.WriteLine($"{cardNumber} is a valid card number: {newTellerMachine.CardValid(cardNumber)}");
                     Console.WriteLine($"ATM - {manufacturer} - Balance:{newTellerMachine.Balance()}\n");
+                    totalSum += newTellerMachine.Balance();
 
 
                 }
+                Console.WriteLine($"\n ATM Machines TOTAL BALANCE: {totalSum}");
             }
             //
             
