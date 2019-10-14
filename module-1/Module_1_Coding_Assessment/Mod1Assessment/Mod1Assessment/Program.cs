@@ -20,6 +20,19 @@ namespace Mod1Assessment
             Console.ReadLine();
 
 
+            //Started cardValid
+            //string cardNumber = "57385863949583846";
+
+            //bool cardValid(cardNumber)
+            //{
+            //    if (cardNumber[0] == 5 && cardNumber.Length == 16)
+            //    {
+            //        return true;
+            //    }
+            //    else if (cardNumber[0] == 4 && (cardNumber.Length == 13 || cardNumber.Length == 16)
+            //}
+
+
         }
     }
 }
