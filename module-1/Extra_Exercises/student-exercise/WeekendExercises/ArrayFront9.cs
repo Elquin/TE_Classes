@@ -16,7 +16,22 @@ namespace Exercises
         */
         public bool ArrayFront9(int[] nums)
         {
+
+            if (nums.Length <= 4 && nums.Contains(9))
+            {
+                return true;
+            }
+            else if (nums.Length <= 4)
+            {
+                return false;
+            }
+            else if (nums[0].Equals(9) || nums[1].Equals(9) || nums[2].Equals(9) || nums[3].Equals(9))
+            {
+                    return true;
+            }
             return false;
+                
+            
         }
     }
 }

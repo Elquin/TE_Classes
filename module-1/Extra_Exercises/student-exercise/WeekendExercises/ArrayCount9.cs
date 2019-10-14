@@ -16,7 +16,15 @@ namespace Exercises
           */
         public int ArrayCount9(int[] nums)
         {
-            return 0;
+            int numberNines = 0;
+            foreach (int num in nums)
+            {
+                if (num == 9)
+                {
+                    numberNines++;
+                }
+            }
+            return numberNines;
         }
     }
 }

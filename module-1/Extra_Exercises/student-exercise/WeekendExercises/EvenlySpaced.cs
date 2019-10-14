@@ -17,6 +17,26 @@ namespace Exercises
         */
         public bool EvenlySpaced(int a, int b, int c)
         {
+            if ((a > b && b > c) && a - b == c)
+            {
+                return true;
+            }
+            else if ((b > a && a > c) && b - a == c)
+            {
+                return true;
+            }
+            else if ((c > a && a > b) && c - a == b)
+            {
+                return true;
+            }
+            else if ((c > b && b > a) && c - b == a)
+            {
+                return true;
+            }
+            else if ((a > c && c > b) && a - c == b)
+            {
+                return true;
+            }
             return false;
         }
     }

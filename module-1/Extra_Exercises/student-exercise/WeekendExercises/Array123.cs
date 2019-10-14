@@ -16,6 +16,10 @@ namespace Exercises
          */
         public bool Array123(int[] nums)
         {
+            if (nums.Contains(1) && nums.Contains(2) && nums.Contains(3))
+            {
+                return true;
+            }
             return false;
         }
     }
