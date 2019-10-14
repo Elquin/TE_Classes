@@ -23,7 +23,7 @@ namespace Mod1Assessment
             //Console.WriteLine($"ATM - {manufacturer} - {newTellerMachine.Balance()}");
             //Using StreamReader to read in contents of csv file and assing as string line.
             decimal totalSum = 0;
-            using (StreamReader st = new StreamReader(@"C:\Users\RHolland\git\robertholland-c\module-1\Module_1_Coding_Assessment\Mod1Assessment\Mod1Assessment\Data\TellerInput.csv"))
+            using (StreamReader st = new StreamReader(@"..\..\..\Data\TellerInput.csv"))
             {
                 while (!st.EndOfStream)
                 {
