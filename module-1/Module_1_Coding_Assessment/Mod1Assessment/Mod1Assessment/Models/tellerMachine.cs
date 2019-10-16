@@ -27,7 +27,12 @@ namespace Mod1Assessment.Models
             return Deposits - Withdrawals;
         }
 
-        internal bool CardValid(string cardNumber)
+        public override string ToString()
+        {
+            return base.ToString();  //not completed, finish!
+        }
+
+        public bool CardValid(string cardNumber)
         {
             if (CardNumber[0].Equals('5') && CardNumber.Length == 16)
             {

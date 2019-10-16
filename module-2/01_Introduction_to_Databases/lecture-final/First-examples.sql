@@ -54,6 +54,7 @@ FROM city
 WHERE countrycode = 'USA'
 AND district LIKE '%Z%';
 
+<<<<<<< HEAD
 --Can I find states with 5 characters in their names?
 SELECT *
 FROM city
@@ -75,6 +76,35 @@ SELECT DISTINCT name, district
 FROM city
 WHERE countrycode = 'USA'
 ORDER BY district, name DESC
+=======
+-- Can I find stes with 5 characters in their names?
+SELECT * 
+FROM city
+WHERE district LIKE '_____';
+
+-- Use the 'AS' keyword to set a column alias
+SELECT code Id, name AS Country, indepyear AS 'Independence Year', surfacearea * 2 AS 'Double Surface Area'
+FROM country
+WHERE indepyear IS NOT NULL
+
+-- List the 10 most populous countries
+SELECT TOP 10 code, name
+FROM country
+ORDER BY population DESC
+
+-- Get a list of states in the US
+SELECT DISTINCT name, district
+FROM city
+WHERE countrycode = 'USA'
+ORDER BY district ASC, name DESC
+
+
+Select '"' + name  + '"' AS 'Name (varchar)', '"' + convert(char(100), name) + '"' AS 'Name (char)'  -- CAST(name AS char[100])
+FROM city
+
+Select name, CAST(name AS char(100))
+FROM city
+>>>>>>> 2cf3f8b0b1665f06278cd53add87268a2469c4da
 
 SELECT '"' + name + '"' AS 'Name as (varchar)', '"' +  CAST (name AS char(100)) + '"' AS 'Name (char)'
 FROM city
