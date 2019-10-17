@@ -1,5 +1,6 @@
 ﻿using Mod1Assessment.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Mod1Assessment
@@ -23,6 +24,7 @@ namespace Mod1Assessment
             //Console.WriteLine($"ATM - {manufacturer} - {newTellerMachine.Balance()}");
             //Using StreamReader to read in contents of csv file and assing as string line.
             decimal totalSum = 0;
+            List<TellerMachine> atmList = new List<TellerMachine>();
             using (StreamReader st = new StreamReader(@"..\..\..\Data\TellerInput.csv"))
             {
                 while (!st.EndOfStream)
@@ -36,18 +38,17 @@ namespace Mod1Assessment
                     string cardNumber = "5738586394958384";
 
 
-                    TellerMachine newTellerMachine = new TellerMachine(manufacturer, deposits, withdrawal, cardNumber)
-                    {
+                    TellerMachine newTellerMachine = new TellerMachine(manufacturer, deposits, withdrawal, cardNumber);
+                    atmList.Add(newTellerMachine);
+                    Console.WriteLine(newTellerMachine.ToString());
 
-                    };
-
-                    Console.WriteLine($"{cardNumber} is a valid card number: {newTellerMachine.CardValid(cardNumber)}");
-                    Console.WriteLine($"ATM - {manufacturer} - Balance:{newTellerMachine.Balance()}\n");
-                    totalSum += newTellerMachine.Balance();
+                    //Console.WriteLine($"{cardNumber} is a valid card number: {newTellerMachine.CardValid(cardNumber)}");
+                    //Console.WriteLine($"ATM - {manufacturer} - Balance:{newTellerMachine.Balance}\n");
+                    totalSum += newTellerMachine.Balance; 
 
 
                 }
-                Console.WriteLine($"\n ATM Machines TOTAL BALANCE: {totalSum}");
+                Console.WriteLine($"\n ATM Machines TOTAL BALANCE: {totalSum:c}");
             }
             //
             

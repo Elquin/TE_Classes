@@ -21,15 +21,17 @@ namespace Mod1Assessment.Models
         public decimal Deposits { get; set; }
         public decimal Withdrawals { get; set; }
         public string CardNumber { get; set; }
-
-        public decimal Balance()
+        public decimal Balance
         {
-            return Deposits - Withdrawals;
+            get
+            {
+                return Deposits - Withdrawals;
+            }
         }
 
         public override string ToString()
         {
-            return base.ToString();  //not completed, finish!
+            return $"Balance: {Balance}";
         }
 
         public bool CardValid(string cardNumber)
@@ -42,7 +44,7 @@ namespace Mod1Assessment.Models
             {
                 return true;
             }
-            else if (CardNumber[0].Equals('3') && (CardNumber[1] == 4 || CardNumber[1] == 7))
+            else if (CardNumber[0].Equals('3') && (CardNumber[1] == '4' || CardNumber[1] == '7'))
             {
                 return true;
             }
