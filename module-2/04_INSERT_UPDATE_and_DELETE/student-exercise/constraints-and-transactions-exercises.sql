@@ -53,6 +53,7 @@ VALUES
 
 SELECT *
 FROM film_category
+WHERE film_id IN (274, 494, 714, 996)
 
 -- 6. Mathmagical films always have a "G" rating, adjust all Mathmagical films
 -- accordingly.
@@ -62,13 +63,6 @@ SET rating = 'G'
 WHERE film_id IN
 (SELECT film_id FROM film_category WHERE category_id = (SELECT category_id FROM category WHERE name = 'Mathmagical'))
 
-SELECT *
-FROM film_category
-WHERE category_id = 17
-
-SELECT *
-FROM film
-WHERE title = 'Euclidean PI'
 
 
 -- 7. Add a copy of "Euclidean PI" to all the stores.
