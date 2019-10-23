@@ -40,7 +40,7 @@ namespace Mod1Assessment
 
                     TellerMachine newTellerMachine = new TellerMachine(manufacturer, deposits, withdrawal, cardNumber);
                     atmList.Add(newTellerMachine);
-                    Console.WriteLine(newTellerMachine.ToString());
+                    Console.WriteLine(newTellerMachine.ToString()); //writing overriden ToString on newTellerMachine
 
                     //Console.WriteLine($"{cardNumber} is a valid card number: {newTellerMachine.CardValid(cardNumber)}");
                     //Console.WriteLine($"ATM - {manufacturer} - Balance:{newTellerMachine.Balance}\n");
@@ -48,6 +48,7 @@ namespace Mod1Assessment
 
 
                 }
+                
                 Console.WriteLine($"\n ATM Machines TOTAL BALANCE: {totalSum:c}");
             }
             //

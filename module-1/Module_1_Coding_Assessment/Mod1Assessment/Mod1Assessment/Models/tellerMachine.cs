@@ -31,7 +31,7 @@ namespace Mod1Assessment.Models
 
         public override string ToString()
         {
-            return $"Balance: {Balance}";
+            return $"ATM - {Manufacturer}, Balance: {Balance}";
         }
 
         public bool CardValid(string cardNumber)

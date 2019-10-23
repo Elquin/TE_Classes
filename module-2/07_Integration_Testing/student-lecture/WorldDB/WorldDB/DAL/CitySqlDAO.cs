@@ -83,7 +83,6 @@ namespace WorldDB.DAL
             }
             catch (SqlException exception)
             {
-                // TODO: We should log here....
                 Console.WriteLine(exception.Message);
                 throw;
             }
