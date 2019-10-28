@@ -5,17 +5,28 @@
     <title>Box Model</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
-        .RedParagraph{
+        p.redParagraph{
             color: red;
         }
     </style>
 </head>
 
 <body>
-    <h1 style="color: green;">Heading 1</h1>
-    <p class="RedParagraph">This is a paragraph</p>
+    <h1 style="color: green;">Heading One</h1>
+    <p class="redParagraph">This is a paragraph</p>
     <h2>This is a sub-heading</h2>
     <p id="secondP">This is another paragraph</p>
+    <p>Plain ole paragraph</p>
+    <div class="redParagraph">
+        This is a div. Should it be Red?
+    </div>
+    <div id="messingAround">
+        <p>This is a P inside the div. It <strong>is a direct child</strong> of the div.</p>
+
+        <div id = "insideDiv">
+            <p>This is another P, but <strong>it is just a descendent</strong> of the messing around div.</p>
+        </div>
+    </div>
 </body>
 
 </html>

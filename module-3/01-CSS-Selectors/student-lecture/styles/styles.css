@@ -1,14 +1,20 @@
 html {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
 }
 h2 {
   background-color: #ECA008;
   color: White; 
 }
 p {
+  color: royalblue;
   background-color: lightgray;
 }
 #secondP {
   color: purple;
   font-weight: bold;
+}
+
+div#messingAround > p {
+  background-color: crimson;
 }

@@ -13,5 +13,77 @@
     box-sizing: border-box;
     font-family: Tahoma, Verdana, Segoe, sans-serif;
   }
+
+
+  #logo_side {
+    display: block;
+    margin-left: 18%;
+    margin-right: auto;
+    width: 150px;
+  }
+
+  #top_logo {
+    height: 100px;
+  }
+
+  #navbar {
+    position: fixed;
+    left: 0;
+    margin-right: 15px;
+  }
+
+  nav li {
+    list-style-type: none;
+    font-family: "Arial", Times, Sans-serif;
+    font-size: 24px;
+    font-weight: bold; 
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding-bottom: 15px;
+    border-bottom: 10px;
+    border-bottom: 1px solid #8dd8f3;
+  }
+
+  nav li a:link{
+    color: #00adee;
+    text-decoration: none;
+  }
+
+  main {
+    margin-left: 200px;
+    padding-left: 20px;
+    border-left: 1px solid #8dd8f3;
+  }
+
+  #rolling_img {
+    width: 100%;
+  }
+
+  div {
+    width: 33%;
+    height: auto;
+    float: left;
+  }
+
+  div h2 {
+    color: #8cc36f;
+  }
+
+  #what-we-do {
+    border-right: 1px solid #c1eea8;
+    padding-right: 15px;
+    margin-top: 20px;
+  }
   
+  #our-work{
+    border-right: 1px solid #c1eea8;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+  }
+
+  #contact-us{
+    padding-left: 15px;
+    margin-top: 20px;
+  }
   
