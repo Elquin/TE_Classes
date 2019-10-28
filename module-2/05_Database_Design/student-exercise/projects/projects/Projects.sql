@@ -40,6 +40,8 @@ CREATE TABLE Employee (
 	constraint fk_DepartmentId_1 FOREIGN KEY (DepartmentId) REFERENCES Department(DepartmentId)
 )
 
+--needs employee/project table for relational table
+
 INSERT INTO PROJECT (ProjectName, StartDate, NumberOfEmployees)
 VALUES ('Mobile App', '10-20-2019', 2), ('Video Game', '10-25-2019', 2),
 ('Database', '11-20-2019', 2), ('Member Rewards Catalogue', '10-25-2019', 2)

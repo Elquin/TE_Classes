@@ -13,16 +13,84 @@ namespace Blogs
             this.connectionString = connectionString;
         }
 
+
         public IList<Post> GetAllPosts()
         {
-            // Implement this method to pull in all posts from database
+            try
+            {
+                
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM posts", connection);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    IList<Post> postList = new IList<Post>();
+                    while (reader.Read())
+                    {
+                        postList.Add(RowToObject(reader));
+                        return null;
+                    }
+                    return postList;
 
-            return null;
+                }
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public void Save(Post newPost)
+
+        //public void Save(Post newPost)
+        //{
+
+        //    try
+        //    {
+
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            connection.Open();
+        //            SqlCommand cmd = new SqlCommand("INSERT INTO posts", connection);
+        //            SqlDataReader reader = cmd.ExecuteReader();
+        //            IList<Post> postList = new IList<Post>();
+        //            while (reader.Read())
+        //            {
+        //                postList.Add(RowToObject(reader));
+        //                return null;
+        //            }
+        //            return postList;
+
+        //        }
+
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        throw;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    // Implement this method to save post to database
+        //}
+
+
+
+        private Post RowToObject(SqlDataReader reader)
         {
-            // Implement this method to save post to database
+            Post post = new Post();
+            post.Body = Convert.ToString(reader["body"]);
+            post.Created = Convert.ToDateTime(reader["created"]);
+            post.Id = Convert.ToInt32(reader["id"]);
+            post.IsPublished = Convert.ToBoolean(reader["published"]);
+            post.Name = Convert.ToString(reader["name"]);
+            return post;
+
         }
     }
 }
