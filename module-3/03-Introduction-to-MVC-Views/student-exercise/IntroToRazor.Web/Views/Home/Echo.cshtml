@@ -9,7 +9,18 @@
         <li><a asp-controller="Home" asp-action="Echo" asp-route-word="Goodbye!" asp-route-count="50">Goodbye! 50</a></li>
     </ul>
 </nav>
+<ul>
 
-@*
-    REPLACE THIS COMMENT SECTION WITH YOUR UNORDERED LIST
-*@
+@{
+    string word = ViewData["word"].ToString();
+    int count = Convert.ToInt32(ViewData["count"]);
+    string style = "px";
+
+    while (count > 0)
+    {
+        <li style="font-size: @count@style;">@word</li>
+        count--;
+    }
+
+}
+</ul>
