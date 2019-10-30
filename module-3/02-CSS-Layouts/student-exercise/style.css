@@ -31,7 +31,7 @@ body {
 }
 
 
-header #te-logo{
+#te-logo{
     width: 300px;
 }
 
@@ -61,6 +61,7 @@ header #te-logo{
 #student-picture img{
     border-radius: 50%;
     width: 300px;
+    align-self: center;
 }
 
 #experience{
