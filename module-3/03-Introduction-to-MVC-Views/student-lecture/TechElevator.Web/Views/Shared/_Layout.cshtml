@@ -4,8 +4,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" />  @*Every view we create references this style sheet*@
 </head>
 <body>    
+    <nav>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Home" asp-action="Greeting">Greeting</a></li>
+        </ul>
+    </nav>
+
     @{ 
         // TODO 03: Add a nav bar and logo to the top of every page 
     }

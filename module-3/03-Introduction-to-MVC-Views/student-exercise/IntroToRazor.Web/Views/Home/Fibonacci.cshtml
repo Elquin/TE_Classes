@@ -10,6 +10,24 @@
     </ul>
 </nav>
 
-@*
-    REPLACE THIS COMMENT SECTION WITH YOUR UNORDERED LIST
-*@
+<ul id="fibonacci">
+
+    @{int num = Convert.ToInt32(ViewData["max"]);
+
+        int number1 = 1;
+        int number2 = 1;
+        int number3 = 2;
+
+        <li>@number1 </li>
+        <li>@number2 </li>
+
+        while (number3 < num - number1)
+        {
+            number3 = number1 + number2;
+            number1 = number2;
+            number2 = number3;
+            <li>@number3 </li>
+
+        }
+    }
+</ul>

@@ -9,7 +9,27 @@
         <li><a asp-controller="Home" asp-action="FizzBuzz" asp-route-number="100">100</a></li>
     </ul>
 </nav>
+<ul id="fizzbuzz">
 
-@*
-    REPLACE THIS COMMENT SECTION WITH YOUR UNORDERED LIST
-*@
+@for (int i = 1; i <= (Convert.ToInt32(ViewData["number"])); i++)
+{
+    if (i % 3 == 0 && i % 5 == 0)
+    {
+        <li class="fizzbuzz">FizzBuzz!</li>
+    }
+    else if (i % 5 == 0)
+    {
+        <li class="buzz">Buzz!</li>
+    }
+    else if (i % 3 == 0)
+    {
+        <li class="fizz">Fizz!</li>
+    }
+    else
+    {
+        <li>@i</li>
+    }
+}
+
+</ul>
+
