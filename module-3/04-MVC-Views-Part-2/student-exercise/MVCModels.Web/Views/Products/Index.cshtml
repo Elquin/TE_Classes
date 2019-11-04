@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model IList<Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -31,126 +31,135 @@
         </div>
 
         <!-- Container for all of the Products -->
+        
         <div id="grid">
             <!-- The following HTML shows different examples of what HTML
-         could be rendered based on different rules. For purposes
-         of demonstration we've written it out so you can see it
-         when you load the page up. -->
+    could be rendered based on different rules. For purposes
+    of demonstration we've written it out so you can see it
+    when you load the page up. -->
             <!-- Standard Product (assuming no special cases) -->
-            <div class="tile ">
-
-                <!-- Link to the Detail page using the product id (e.g. Products/Detail/1) -->
-                <a class="product-image" href="~/images/product-images/@Model.ImageName">
-                    <img src="/images/product-images/grey-sofa.jpg" />
-                </a>
-                <div class="details">
-                    <p class="name">@Model.Name</p>
-
-                    <!-- .filled will make the star solid -->
-                    <div class="rating">
-                        @{
-                            int stars = (int)Model.AverageRating;
-                            for (int i = 1; i <= 5; i++)
-                            {
-                                if (stars >= i)
-                                {
-                                    <span class="filled">&#9734;</span>
-                                }
-                                else
-                                {
-                                    <span>&#9734;</span>
-                                }
-                            }
-                        }
-                    </div>
-
-                    <p class="price">@Model.Price</p>
-                </div>
-            </div>
-
-            <div class="tile ">
-                <!-- Include this if the product is considered a Top Seller -->
-                @{
-                    if (Model.IsTopSeller)
-                    {
-                        <span class="banner top-seller">Top Seller!</span>
-                    }
-                }
-
-                <!-- Link to the Detail page using the product id (e.g. Products/Detail/1) -->
-                <a class="product-image" asp-controller="Products" asp-action="Detail" asp-route-id="@Model.Id"></a> 
-                <img src="~/images/product-images/@Model.ImageName" />
-                <div class="details">
-                    <p class="name">@Model.Name</p>
-
-                    <!-- .filled will make the star solid -->
-                    <div class="rating">
-                        @{
-                            int stars2 = (int)Model.AverageRating;
-                            for (int i = 1; i <= 5; i++)
-                            {
-                                if (stars2 >= i)
-                                {
-                                    <span class="filled">&#9734;</span>
-                                }
-                                else
-                                {
-                                    <span>&#9734;</span>
-                                }
-                            }
-                        }
-                    </div>
-
-                    <!-- Include this if the remaining quantity is greater than 0, but less than or equal to 5 -->
-                    @{
-                        if (Model.RemainingStock > 0 && Model.RemainingStock <= 5)
-                        {
-                            <span class="product-alert">Only @Model.RemainingStock left!</span>
-                            <p class="price">@Model.Price</p>
-                        }
-                    }
-                </div>
-            </div>
-
-            <!-- Add the .sold-out class if the remaining quantity is 0 -->
-            @{
-                if (Model.RemainingStock == 0)
+            @{ foreach (Product product in Model)
                 {
-                    <div class="tile sold-out">
-                        <!-- Include this if the remainig quantity is 0 -->
-                        <span class="banner">Sold Out</span>
+                    if (!product.IsTopSeller && product.RemainingStock > 5)
+                    {
+                        <div class="tile ">
 
-                        <!-- Link to the Detail page using the product id (e.g. Products/Detail/1) -->
-                        <a class="product-image" asp-controller="Products" asp-action="Detail" asp-route-id="@Model.Id"></a>
-                            <img src="~/images/product-images/@Model.ImageName" />
-                        <div class="details">
-                            <p class="name">@Model.Name</p>
+                            <!-- Link to the Detail page using the product id (e.g. Products/Detail/1) -->
+                            <a class="product-image" asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id">
+                                <img src="/images/product-images/@product.ImageName" />
+                            </a>
+                            <div class="details">
+                                <p class="name">@product.Name</p>
 
-                            <!-- .filled will make the star solid -->
-                            <div class="rating">
-                                @{ 
-                                    int stars3 = (int)Model.AverageRating;
-                                    for (int i = 1; i <= 5; i++)
-                                    {
-                                        if (stars3 >= i)
+                                <!-- .filled will make the star solid -->
+                                <div class="rating">
+                                    @{
+                                        int stars = (int)product.AverageRating;
+                                        for (int i = 1; i <= 5; i++)
                                         {
-                                            <span class="filled">&#9734;</span>
-                                        }
-                                        else
-                                        {
-                                            <span>&#9734;</span>
+                                            if (stars >= i)
+                                            {
+                                                <span class="filled">&#9734;</span>
+                                            }
+                                            else
+                                            {
+                                                <span>&#9734;</span>
+                                            }
                                         }
                                     }
-                                 }
+                                </div>
+
+                                <p class="price">@product.Price</p>
                             </div>
-
-                            <p class="price">@Model.Price</p>
                         </div>
-                    </div>
-                }
-            }
+                                        }
+
+                    @if (product.IsTopSeller)
+                    {
+                        <div class="tile ">
+                            <!-- Include this if the product is considered a Top Seller -->
 
 
-        </div>
+                            <span class="banner top-seller">Top Seller!</span>
+
+
+                            <!-- Link to the Detail page using the product id (e.g. Products/Detail/1) -->
+                            <a class="product-image" asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id"></a>
+                            <img src="~/images/product-images/@product.ImageName" />
+                            <div class="details">
+                                <p class="name">@product.Name</p>
+
+                                <!-- .filled will make the star solid -->
+                                <div class="rating">
+                                    @{
+                                        int stars2 = (int)product.AverageRating;
+                                        for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (stars2 >= i)
+                                            {
+                                                <span class="filled">&#9734;</span>
+                                            }
+                                            else
+                                            {
+                                                <span>&#9734;</span>
+                                            }
+                                        }
+                                    }
+                                </div>
+
+                                <!-- Include this if the remaining quantity is greater than 0, but less than or equal to 5 -->
+                                @{
+                                    if (product.RemainingStock > 0 && product.RemainingStock <= 5)
+                                    {
+                                        <span class="product-alert">Only @product.RemainingStock left!</span>
+                                    }
+                                    <p class="price">@product.Price</p>
+                                }
+                            </div>
+                        </div>
+                                    }
+
+
+                    <!-- Add the .sold-out class if the remaining quantity is 0 -->
+
+                                    if (product.RemainingStock == 0)
+                                    {
+                        <div class="tile sold-out">
+                            <!-- Include this if the remainig quantity is 0 -->
+                            <span class="banner">Sold Out</span>
+
+                            <!-- Link to the Detail page using the product id (e.g. Products/Detail/1) -->
+                            <a class="product-image" asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id"></a>
+                            <img src="~/images/product-images/@product.ImageName" />
+                            <div class="details">
+                                <p class="name">@product.Name</p>
+
+                                <!-- .filled will make the star solid -->
+                                <div class="rating">
+                                    @{
+                                        int stars3 = (int)product.AverageRating;
+                                        for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (stars3 >= i)
+                                            {
+                                                <span class="filled">&#9734;</span>
+                                            }
+                                            else
+                                            {
+                                                <span>&#9734;</span>
+                                            }
+                                        }
+                                    }
+                                </div>
+
+                                <p class="price">@product.Price</p>
+                            </div>
+                        </div>
+                                                }
+
+                                            }
+
+                                        }
+            </div>
     </div>
 </div>
