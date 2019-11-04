@@ -36,7 +36,7 @@
             {
                 <p class="alert-remaining">BUY NOW! Only @Model.RemainingStock left!</p>
                 <p class="description">@Model.Description</p>
-                <p class="price">@Model.Price</p>
+                <p class="price">$@Model.Price</p>
             }
         }
 
@@ -46,13 +46,13 @@
             if (Model.RemainingStock > 0)
             {
                 <p class="description">@Model.Description</p>
-                <p class="price">@Model.Price</p>
+                <p class="price">$@Model.Price</p>
                 <button class="action">Add to Cart</button>
             }
             else
             {
                 <p class="description">@Model.Description</p>
-                <p class="price">@Model.Price</p>
+                <p class="price">$@Model.Price</p>
                 <button disabled>Sold Out</button>
             }
         }

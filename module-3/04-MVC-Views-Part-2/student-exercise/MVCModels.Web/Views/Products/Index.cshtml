@@ -24,9 +24,9 @@
         <div id="sorting-options">
             <h3>Sort By</h3>
             <ul>
-                <li><a asp-controller="Products" asp-action="sortOrder" asp-route-sort="PriceLowToHigh">Price - Low to High</a></li>
-                <li><a asp-controller="Products" asp-action="sortOrder" asp-route-sort="PriceHighToLow">Price - High to Low</a></li>
-                <li><a asp-controller="Products" asp-action="sortOrder" asp-route-sort="RatingHighToLow">Rating - High to Low</a></li>
+                <li><a asp-controller="@ViewData["Controller"]" asp-action="@ViewData["Action"]" asp-route-sortOrder="PriceLowToHigh">Price - Low to High</a></li>
+                <li><a asp-controller="@ViewData["Controller"]" asp-action="@ViewData["Action"]" asp-route-sortOrder="PriceHighToLow">Price - High to Low</a></li>
+                <li><a asp-controller="@ViewData["Controller"]" asp-action="@ViewData["Action"]" asp-route-sortOrder="RatingHighToLow">Rating - High to Low</a></li>
             </ul>
         </div>
 
@@ -69,7 +69,7 @@
                                     }
                                 </div>
 
-                                <p class="price">@product.Price</p>
+                                <p class="price">$@product.Price</p>
                             </div>
                         </div>
                                         }
@@ -113,7 +113,7 @@
                                     {
                                         <span class="product-alert">Only @product.RemainingStock left!</span>
                                     }
-                                    <p class="price">@product.Price</p>
+                                    <p class="price">$@product.Price</p>
                                 }
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                     }
                                 </div>
 
-                                <p class="price">@product.Price</p>
+                                <p class="price">$@product.Price</p>
                             </div>
                         </div>
                                                 }
