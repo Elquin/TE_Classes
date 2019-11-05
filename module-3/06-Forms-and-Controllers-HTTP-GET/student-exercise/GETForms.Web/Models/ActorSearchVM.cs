@@ -7,6 +7,8 @@ namespace GETForms.Web.Models
 {
     public class ActorSearchVM
     {
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public IList<Actor> Actors { get; set; }
     }
 }
