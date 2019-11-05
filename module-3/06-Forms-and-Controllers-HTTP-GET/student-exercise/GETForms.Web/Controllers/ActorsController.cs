@@ -24,10 +24,9 @@ namespace GETForms.Web.Controllers
         /// </summary>
         /// <param name="request">A request model that contains the search parameters.</param>
         /// <returns></returns>
-        public ActionResult SearchResult(/*ActorSearch request */)
+        public ActionResult SearchResult(Actor actorName)
         {
-            /* Call the DAL and pass the values as a model back to the View */
-            return null;
+            return View(actorName);
         }
     }
 }

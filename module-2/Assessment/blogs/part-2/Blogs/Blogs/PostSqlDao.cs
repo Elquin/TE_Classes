@@ -24,11 +24,10 @@ namespace Blogs
                     connection.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM posts", connection);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    IList<Post> postList = new IList<Post>();
+                    IList<Post> postList = new List<Post>();
                     while (reader.Read())
                     {
                         postList.Add(RowToObject(reader));
-                        return null;
                     }
                     return postList;
 
@@ -46,38 +45,37 @@ namespace Blogs
         }
 
 
-        //public void Save(Post newPost)
-        //{
+        public void Save(Post newPost)
+        {
 
-        //    try
-        //    {
+            try
+            {
 
-        //        using (SqlConnection connection = new SqlConnection(connectionString))
-        //        {
-        //            connection.Open();
-        //            SqlCommand cmd = new SqlCommand("INSERT INTO posts", connection);
-        //            SqlDataReader reader = cmd.ExecuteReader();
-        //            IList<Post> postList = new IList<Post>();
-        //            while (reader.Read())
-        //            {
-        //                postList.Add(RowToObject(reader));
-        //                return null;
-        //            }
-        //            return postList;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO posts (body, created, published, name) VALUES (@body, @created, @published, @name); SELECT @@Identity;", connection);
+                    cmd.Parameters.AddWithValue("@body", newPost.Body);
+                    cmd.Parameters.AddWithValue("@created", newPost.Created);
+                    cmd.Parameters.AddWithValue("@published", newPost.IsPublished);
+                    cmd.Parameters.AddWithValue("@name", newPost.Name);
 
-        //        }
 
-        //    }
-        //    catch (SqlException)
-        //    {
-        //        throw;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    // Implement this method to save post to database
-        //}
+                    int id = Convert.ToInt32(cmd.ExecuteScalar());
+                    newPost.Id = id;
+                }
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            // Implement this method to save post to database
+        }
 
 
 
