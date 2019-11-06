@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Film>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "SearchResult";
 }
 
 <form method="get" action="~/films/SearchResult">
@@ -30,3 +30,9 @@
     <br />
     <input type="submit" value="Search" />
 </form>
+
+<div><p>Title Description Release Year Length Rating</p></div>
+@foreach (Film film in Model)
+{
+    <div>@film.Title  @film.Description   @film.ReleaseYear   @film.Length   @film.Rating</div>
+}
