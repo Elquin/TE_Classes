@@ -5,11 +5,11 @@
 
 <form method="get" action="~/films/SearchResult">
     <label for="minLength">Min Length: </label>
-    <input type="text" id="minLength" />
+    <input type="text" name="minLength" id="minLength" />
     <label for="maxLength">Max Length: </label>
-    <input type="text" id="maxLength" />
+    <input type="text" name="maxLength" id="maxLength" />
     <label for="genre">Genre: </label>
-    <select id="genre">
+    <select name="genre" id="genre">
         <option value="action">Action</option>
         <option value="animation">Animation</option>
         <option value="children">Children</option>
@@ -31,8 +31,23 @@
     <input type="submit" value="Search" />
 </form>
 
-<div><p>Title Description Release Year Length Rating</p></div>
-@foreach (Film film in Model)
-{
-    <div>@film.Title  @film.Description   @film.ReleaseYear   @film.Length   @film.Rating</div>
-}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Release Year</th>
+        <th>Length</th>
+        <th>Rating</th>
+    </tr>
+    @foreach (Film film in Model)
+    {
+    <tr>
+        <td>@film.Title</td>
+        <td>@film.Description</td>
+        <td>@film.ReleaseYear</td>
+        <td>@film.Length</td>
+        <td>@film.Rating</td>
+    </tr>
+    }
+    </table>
+
