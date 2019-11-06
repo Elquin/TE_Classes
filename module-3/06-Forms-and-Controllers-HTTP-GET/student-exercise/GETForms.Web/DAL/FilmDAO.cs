@@ -48,7 +48,6 @@ namespace GETForms.Web.DAL
         public IList<Film> GetFilmsBetween(string genre, int minLength, int maxLength)
         {
             IList<Film> films = new List<Film>();
-
             string filmSearchSql = @"SELECT title, description, release_year, length, rating FROM film
                 JOIN film_category ON film_category.film_id = film.film_id 
                 JOIN category ON category.category_id = film_category.category_id
@@ -59,7 +58,7 @@ namespace GETForms.Web.DAL
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(filmSearchSql, conn);
-                cmd.Parameters.AddWithValue("@category_name", genre);
+                cmd.Parameters.AddWithValue("@category_name", genre ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@minLength", minLength);
                 cmd.Parameters.AddWithValue("@maxLength", maxLength);
 
