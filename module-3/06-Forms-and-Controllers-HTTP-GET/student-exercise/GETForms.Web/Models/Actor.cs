@@ -16,7 +16,5 @@ namespace GETForms.Web.Models
         /// The last name to search for.
         /// </summary>
         public string LastName { get; set; }
-
-        public IList<Actor> Actors { get; set; }
     }
 }

@@ -11,11 +11,12 @@
 <form method="get" asp-controller="City" asp-action="Search">
     <table>
         <tr>
-            <td><label asp-for="CountryCode">Country</label> </td>
-            <td><input type="text" asp-for="CountryCode" /></td>
+            <td><label asp-for="CountryCode"></label> </td> @*Removed label to allow MVC to set label in CitySearchVM*@
+            @*<td><input type="text" asp-for="CountryCode" /></td>*@
+            <td><select asp-for="CountryCode" asp-items="Model.CountryList"></select></td>
         </tr>
         <tr>
-            <td><label asp-for="District">District</label> </td>
+            <td><label asp-for="District"></label> </td>
             <td><input type="text" asp-for="District" /></td>
         </tr>
         <tr>

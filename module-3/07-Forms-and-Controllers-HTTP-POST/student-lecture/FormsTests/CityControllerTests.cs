@@ -15,8 +15,8 @@ namespace FormsTests
         {
             // Arrange
             CityMockDAO cityDAO = new CityMockDAO();
-            //CountryMockDAO countryDAO = new CountryMockDAO();
-            CityController controller = new CityController(cityDAO);
+            CountryMockDAO countryDAO = new CountryMockDAO();
+            CityController controller = new CityController(cityDAO, countryDAO);
 
             // Act
             IActionResult result = controller.Index();
@@ -36,7 +36,8 @@ namespace FormsTests
         {
             // Arrange
             CityMockDAO cityDAO = new CityMockDAO();
-            CityController controller = new CityController(cityDAO);
+            CountryMockDAO countryDAO = new CountryMockDAO();
+            CityController controller = new CityController(cityDAO, countryDAO);
 
             // Act
             CitySearchVM vm = new CitySearchVM()

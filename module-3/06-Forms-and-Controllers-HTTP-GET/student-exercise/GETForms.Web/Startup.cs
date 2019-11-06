@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GETForms.Web.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +33,15 @@ namespace GETForms.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            /**** DEPENDENCY INJECTION *****/
+            // First, find the connection string in AppSettings.json using the Configuration object
+            string connectionString = Configuration.GetConnectionString("DVDStoreDB");
+            // Then tell the DI Container what "implementation" to create whenever it is asked for a "service"
+            services.AddScoped<IActorDAO, ActorDAO>(D => new ActorDAO(connectionString));
+            services.AddScoped<IFilmDAO, FilmDAO>(D => new FilmDAO(connectionString));
+            services.AddScoped<ICustomerDAO, CustomerDAO>(D => new CustomerDAO(connectionString));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

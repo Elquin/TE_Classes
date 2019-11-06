@@ -43,7 +43,9 @@ namespace Forms.Web
             string connectionString = Configuration.GetConnectionString("World");
 
             // Then tell the DI Container what "implementation" to create whenever it is asked for a "service"
+            // If anyone asks for CountryDAO, added CountryDAO below.
             services.AddScoped<ICityDAO, CitySqlDAO>(d => new CitySqlDAO(connectionString));
+            services.AddScoped<ICountryDAO, CountrySqlDAO>(d => new CountrySqlDAO(connectionString));
 
         }
 

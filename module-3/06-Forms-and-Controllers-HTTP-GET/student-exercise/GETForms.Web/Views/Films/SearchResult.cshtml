@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Film>
+@{
+    ViewData["Title"] = "SearchResult";
+}
+
+<form method="get" action="~/films/SearchResult">
+    <table>
+        <p>Minimum Length: </p>
+        <p>Maximum Length:</p>
+        <p>Genre</p>
+        <br />
+        <input type="text" id="minLength" />
+        <input type="text" id="maxLength" />
+        <input type="text" id="genre" />
+        <br />
+        <input type="submit" value="Search" />
+    </table>
+</form>
+
+Name:
+@foreach (Film film in Model)
+{
+    <div>@film.Title @film.Description</div>
+}

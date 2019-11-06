@@ -15,9 +15,11 @@ namespace Forms.Web.Controllers
         /**** DEPENDENCY INJECTION *****/
         // Implement DI by creating contructor arguments and saving off the DAOs in a private variable.
         private ICityDAO cityDAO;
-        public CityController(ICityDAO cityDAO)
+        private ICountryDAO countryDAO;
+        public CityController(ICityDAO cityDAO, ICountryDAO countryDAO) //added dependency of ICountryDAO. 
         {
             this.cityDAO = cityDAO;
+            this.countryDAO = countryDAO;
         }
 
         public IActionResult Index()
@@ -33,6 +35,11 @@ namespace Forms.Web.Controllers
             vm.Cities = cityDAO.GetCities(vm.CountryCode, vm.District);
 
             // TODO 05: Set the CountryList property on the VM for dropdown display
+            IList<Country> countries = countryDAO.GetCountries();
+            vm.CountryList = new SelectList(countries, "Code", "Name"); //creating dropdown list of countries.
+
+            //List<SelectListItem> selectListItems = new List<SelectListItem>();
+            //selectListItems.Add(new SelectListItem("Saturn", "Saturn")); //use for pair exercises
 
             return View(vm);
         }
@@ -48,11 +55,34 @@ namespace Forms.Web.Controllers
         //          This will require us to ask for another "injected" DAO
 
 
+
         // TODO 06: Create the AddCity action. Use the Post-Redirect-Get pattern to prevent double-adds
         //      [Get] Add() - Shows the Add view
         //      [Post] Add(City) - Accepts form contents, adds the city, and redirects to the confirmation page
         //      [Get] ConfirmAdd(int id) - Displays a confirmation message to the user.
-        //      
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(City city)
+        {
+            // Use the DAO to add a city
+            cityDAO.AddCity(city);
+
+            // Redirect to the confirmation page
+            return RedirectToAction("ConfirmAdd");
+        }
+
+        [HttpGet]
+        public IActionResult ConfirmAdd()
+        {
+            return View();
+        }
+
         // TODO 07: Add a link to the navigation menu for Add City
 
 
