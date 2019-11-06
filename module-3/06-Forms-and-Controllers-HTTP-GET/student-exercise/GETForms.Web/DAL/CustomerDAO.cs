@@ -27,11 +27,11 @@ namespace GETForms.Web.DAL
             IList<Customer> customers = new List<Customer>();
 
             string cmdString;
-            if(sortBy == "Last Name")
+            if(sortBy == "last_name")
             {
                 cmdString = "SELECT first_name, last_name, email, active FROM customer WHERE last_name LIKE @search OR first_name LIKE @search ORDER BY last_name";
             }
-            else if(sortBy == "Email")
+            else if(sortBy == "email")
             {
                 cmdString = "SELECT first_name, last_name, email, active FROM customer WHERE last_name LIKE @search OR first_name LIKE @search ORDER BY email";
             }
@@ -66,7 +66,9 @@ namespace GETForms.Web.DAL
             return new Customer()
             {
                 FirstName = Convert.ToString(reader["first_name"]),
-                LastName = Convert.ToString(reader["last_name"])
+                LastName = Convert.ToString(reader["last_name"]),
+                Email = Convert.ToString(reader["email"]),
+                IsActive = Convert.ToBoolean(reader["active"]),
             };
         }
 
