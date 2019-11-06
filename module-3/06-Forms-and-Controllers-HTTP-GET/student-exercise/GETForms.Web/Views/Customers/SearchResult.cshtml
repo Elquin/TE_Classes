@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewData["Title"] = "SearchResult";
+}
+
+<form method="get" action="~/customers/SearchResult">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" />
+    <label for="sortBy">Sort By: </label>
+    <select name="sortBy" id="sortBy">
+        <option value="last_name">Last Name</option>
+        <option value="email">E-Mail</option>
+        <option value="active">Active</option>
+    </select>
+    <br />
+    <input type="submit" value="Search" />
+</form>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Active</th>
+    </tr>
+    @foreach (Customer customer in Model)
+    {
+        <tr>
+            <td>@customer.FirstName @customer.LastName</td>
+            <td>@customer.Email</td>
+            <td>@customer.IsActive</td>
+        </tr>
+    }
+</table>
+
