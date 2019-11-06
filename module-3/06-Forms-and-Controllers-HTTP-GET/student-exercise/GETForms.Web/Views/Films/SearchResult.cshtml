@@ -1,24 +1,32 @@
 ﻿@model IEnumerable<Film>
 @{
-    ViewData["Title"] = "SearchResult";
+    ViewData["Title"] = "Index";
 }
 
 <form method="get" action="~/films/SearchResult">
-    <table>
-        <p>Minimum Length: </p>
-        <p>Maximum Length:</p>
-        <p>Genre</p>
-        <br />
-        <input type="text" id="minLength" />
-        <input type="text" id="maxLength" />
-        <input type="text" id="genre" />
-        <br />
-        <input type="submit" value="Search" />
-    </table>
+    <label for="minLength">Min Length: </label>
+    <input type="text" id="minLength" />
+    <label for="maxLength">Max Length: </label>
+    <input type="text" id="maxLength" />
+    <label for="genre">Genre: </label>
+    <select id="genre">
+        <option value="action">Action</option>
+        <option value="animation">Animation</option>
+        <option value="children">Children</option>
+        <option value="classics">Classics</option>
+        <option value="comedy">Comedy</option>
+        <option value="documentary">Documentary</option>
+        <option value="drama">Drama</option>
+        <option value="family">Family</option>
+        <option value="foreign">Foreign</option>
+        <option value="games">Games</option>
+        <option value="horror">Horror</option>
+        <option value="music">Music</option>
+        <option value="new">New</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="sports">Sports</option>
+        <option value="travel">Travel</option>
+    </select>
+    <br />
+    <input type="submit" value="Search" />
 </form>
-
-Name:
-@foreach (Film film in Model)
-{
-    <div>@film.Title @film.Description</div>
-}
