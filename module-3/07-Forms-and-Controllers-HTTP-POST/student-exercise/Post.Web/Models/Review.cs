@@ -16,13 +16,13 @@ namespace Post.Web.Models
 
         public Review() { }
 
-        public Review(string username, int rating, string reviewTitle, string reviewText, DateTime reviewDate)
+        public Review(string username, int rating, string reviewTitle, string reviewText)
         {
             UserName = username;
             Rating = rating;
             ReviewTitle = reviewTitle;
             ReviewText = reviewText;
-            ReviewDate = reviewDate;
+            //ReviewDate = reviewDate;
         }
     }
 }

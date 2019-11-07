@@ -11,14 +11,13 @@ namespace Post.Web.Controllers
 {
     public class HomeController : Controller
     {
-        /**** DEPENDENCY INJECTION *****/
-        // Implement DI by creating contructor arguments and saving off the DAOs in a private variable.
+        
 
-        //private IReviewDAO reviewDAO;
-        //public ReviewController(IReviewDAO reviewDAO)
-        //{
-        //    this.reviewDAO = reviewDAO;
-        //}
+        private IReviewDAO reviewDAO;
+        public HomeController(IReviewDAO reviewDAO)
+        {
+            this.reviewDAO = reviewDAO;
+        }
 
 
         public IActionResult Index()
@@ -27,12 +26,21 @@ namespace Post.Web.Controllers
             return View(reviews);
         }
 
-
         [HttpGet]
-        public IActionResult Save()
+        public ActionResult Newreview()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Newreview(Review review)
+        {
+            reviewDAO.SaveReview(review);
+            return RedirectToAction("Index");
+        }
+
+
+      
 
         [HttpPost]
         public IActionResult Save(Review review)

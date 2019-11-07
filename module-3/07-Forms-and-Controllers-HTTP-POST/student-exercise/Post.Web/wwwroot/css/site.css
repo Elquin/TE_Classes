@@ -35,3 +35,17 @@ body {
         display: none;
     }
 }
+
+.post{
+    padding-top: 7px;
+    padding-left: 10px;
+}
+
+.shaded {
+    background-color: lightgrey;
+}
+
+#dummies {
+    width: 15%;
+    height: 15%;
+}

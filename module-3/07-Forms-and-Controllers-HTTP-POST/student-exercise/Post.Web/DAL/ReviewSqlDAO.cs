@@ -55,12 +55,11 @@ namespace Post.Web.DAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO reviews (username, rating, review_title, review_text, review_date) VALUE (@username, @rating, @reviewTitle, @reviewText, @reviewDate); Select @@Identity;", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO reviews (username, rating, review_title, review_text, review_date) VALUES (@username, @rating, @reviewTitle, @reviewText, GetDate()); Select @@Identity;", conn);
                     cmd.Parameters.AddWithValue("@username", newReview.UserName);
                     cmd.Parameters.AddWithValue("@rating", newReview.Rating);
                     cmd.Parameters.AddWithValue("@reviewTitle", newReview.ReviewTitle);
                     cmd.Parameters.AddWithValue("@reviewText", newReview.ReviewText);
-                    cmd.Parameters.AddWithValue("@reviewDate", newReview.ReviewDate);
 
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }

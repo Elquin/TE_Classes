@@ -1,34 +1,35 @@
 ﻿@model IList<Review>
 @{
     ViewData["Title"] = "Index";
+    bool tableShaded = false;
 }
-
+<img id="dummies" src="~/images/forDummies.png" />
 <h2>Past Reviews</h2>
-<table class="table table-striped">
-    <tbody>
-        @foreach (Review review in Model)
-        {
+@foreach (Review review in Model)
+{
+    <div class="post @(tableShaded ? "shaded" : "")">
+        <table>
             <tr>
-                <td>
-                    @review.ReviewTitle 
-                    @{ 
-                        for(int i = 0; i < review.Rating; i++)
+                <h4>
+                    @review.ReviewTitle
+                    @{
+                        for (int i = 1; i <= review.Rating; i++)
                         {
                             <img src="~/images/star.png" />
                         }
                     }
-                </td>
+                </h4>
             </tr>
             <tr>
-                <td>
-                    by @review.UserName on @review.ReviewDate <br />
-                </td>
+                by @review.UserName on @review.ReviewDate
+                <br />
             </tr>
             <tr>
-                <td>
-                    @review.ReviewText
-                </td>
+                @review.ReviewText
             </tr>
-        }
-    </tbody>
-</table>
+        </table>
+    </div>
+    tableShaded = !tableShaded;
+}
+
+<a asp-area="" asp-controller="Home" asp-action="Newreview">Submit a new review</a>

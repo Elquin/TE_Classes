@@ -12,6 +12,7 @@ namespace SessionCart.Web.Controllers
 {
     public class StoreController : Controller
     {
+        private const string cartSessionKey = "Cart";
         /* Steps
            TODO 02. (StoreController)    Create Index Action for store/index
            TODO 03. (Index View)         Create Index View for store/index
@@ -66,35 +67,53 @@ namespace SessionCart.Web.Controllers
             }
 
             ViewData["Message"] = message;
+            ShoppingCart cart = GetShoppingCart();
 
+            //at this point, I have the cart, with the items as they were last saved into session.
 
-            //For demo purposes, create and populate a shopping cart
+            //For demo purposes, randomly select a product to add to the cart
             IList<Product> products = productDAO.GetProducts();
-            ShoppingCart cart = new ShoppingCart();
+            Random random = new Random();
+            int index = random.Next(products.Count);
+            Product selectedProduct = products[index];
 
-            for (int i = 0; i < products.Count; i++)
-            {
-                cart.AddToCart(products[i], i + 1);
-            }
-            //Serialize the cart object into a string for saving into session
-            string cartJson = JsonConvert.SerializeObject(cart);
-
-            //save the cart string into session
-            HttpContext.Session.SetString("Cart", cartJson);
+            cart.AddToCart(selectedProduct, 1);
+            SaveShoppingCart(cart);
 
             ////////////////////////////////////////////////////////////////////////
-
-
-            //Now Get the Cart string back from the Session
-            string s = HttpContext.Session.GetString("Cart");
-            // Now de-serialize it into a new cart object
-            ShoppingCart anotherCart = JsonConvert.DeserializeObject<ShoppingCart>(s);
-
 
             //Update session with the *new* last time accessed
             HttpContext.Session.SetString("Access", DateTime.Now.ToString());
 
+            ViewData["Message"] = $"Congratulations, you just bought a {selectedProduct.Name} for {selectedProduct.Cost:C}";
+
+
             return View();
+        }
+
+        private void SaveShoppingCart(ShoppingCart cart)
+        {
+            //put the cart back into session
+            string cartJson = JsonConvert.SerializeObject(cart);
+            HttpContext.Session.SetString(cartSessionKey, cartJson);
+        }
+
+        private ShoppingCart GetShoppingCart()
+        {
+            //Get the cart from session
+            string s = HttpContext.Session.GetString(cartSessionKey);
+            ShoppingCart cart;
+
+            if (s == null || s.Length == 0)
+            {
+                cart = new ShoppingCart();
+            }
+            else
+            {
+                cart = JsonConvert.DeserializeObject<ShoppingCart>(s);
+            }
+
+            return cart;
         }
     }
 }
