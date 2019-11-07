@@ -1,0 +1,32 @@
+﻿@model Review
+@{
+    ViewData["Title"] = "Newreview";
+}
+
+<h2>New Book Review</h2>
+
+<form method="post">
+    <table>
+        <tr>
+            <td><label asp-for="UserName">Enter your name:</label></td>
+            <td><input asp-for="UserName" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Rating">How many stars:</label></td>
+            <td><input asp-for="Rating" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ReviewTitle">Provide a title:</label></td>
+            <td><input asp-for="ReviewTitle" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ReviewText"> Review:</label></td>
+            <td><input asp-for="ReviewText" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="SaveReview" /></td>
+        </tr>
+    </table>
+
+</form>

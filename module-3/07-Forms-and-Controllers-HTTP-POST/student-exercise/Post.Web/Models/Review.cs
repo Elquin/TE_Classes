@@ -8,6 +8,21 @@ namespace Post.Web.Models
 {
     public class Review
     {
-       
+        public string UserName { get; set; }
+        public int Rating { get; set; }
+        public string ReviewTitle { get; set; }
+        public string ReviewText { get; set; }
+        public DateTime ReviewDate { get; set; }
+
+        public Review() { }
+
+        public Review(string username, int rating, string reviewTitle, string reviewText, DateTime reviewDate)
+        {
+            UserName = username;
+            Rating = rating;
+            ReviewTitle = reviewTitle;
+            ReviewText = reviewText;
+            ReviewDate = reviewDate;
+        }
     }
 }

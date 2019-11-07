@@ -1,6 +1,34 @@
-﻿
+﻿@model IList<Review>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index";
 }
 
-
+<h2>Past Reviews</h2>
+<table class="table table-striped">
+    <tbody>
+        @foreach (Review review in Model)
+        {
+            <tr>
+                <td>
+                    @review.ReviewTitle 
+                    @{ 
+                        for(int i = 0; i < review.Rating; i++)
+                        {
+                            <img src="~/images/star.png" />
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    by @review.UserName on @review.ReviewDate <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @review.ReviewText
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -22,8 +22,25 @@ namespace Post.Web.DAL
         /// <returns></returns>
         public IList<Review> GetAllReviews()
         {
-            throw new NotImplementedException();
+            IList<Review> review = new List<Review>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM reviews", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    review.Add(MapRowToReview(reader));
+                }
+            }
+
+            return review;
         }
+
+           
+
 
         /// <summary>
         /// Saves a new review to the system.
@@ -32,7 +49,43 @@ namespace Post.Web.DAL
         /// <returns></returns>
         public int SaveReview(Review newReview)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO reviews (username, rating, review_title, review_text, review_date) VALUE (@username, @rating, @reviewTitle, @reviewText, @reviewDate); Select @@Identity;", conn);
+                    cmd.Parameters.AddWithValue("@username", newReview.UserName);
+                    cmd.Parameters.AddWithValue("@rating", newReview.Rating);
+                    cmd.Parameters.AddWithValue("@reviewTitle", newReview.ReviewTitle);
+                    cmd.Parameters.AddWithValue("@reviewText", newReview.ReviewText);
+                    cmd.Parameters.AddWithValue("@reviewDate", newReview.ReviewDate);
+
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
+
+
+        private Review MapRowToReview(SqlDataReader reader)
+        {
+            return new Review()
+            {
+                UserName = Convert.ToString(reader["username"]),
+                Rating = Convert.ToInt32(reader["rating"]),
+                ReviewTitle = Convert.ToString(reader["review_title"]),
+                ReviewText = Convert.ToString(reader["review_text"]),
+                ReviewDate = Convert.ToDateTime(reader["review_date"]),
+            };
+        }
+
+
+
+
     }
 }
