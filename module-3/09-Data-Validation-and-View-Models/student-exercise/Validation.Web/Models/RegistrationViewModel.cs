@@ -20,17 +20,20 @@ namespace Validation.Web.Models
         [EmailAddress(ErrorMessage ="Please supply a valid Email")]
         public string Email { get; set; }
 
-        //[Required(ErrorMessage = "Please supply your Email")]
-        //[EmailAddress(ErrorMessage = "Please supply a valid Email")]
-        //public string ConfirmEmail { get; set; }
+        [Required(ErrorMessage = "Please supply your Email")]
+        [EmailAddress(ErrorMessage = "Please supply a valid Email")]
+        [Compare("Email", ErrorMessage = "Emails do not match")]  //TODO implement compare
+        public string ConfirmEmail { get; set; }
 
         [Required(ErrorMessage = "Please supply a password")]
-        [StringLength(20, MinimumLength = 8)]
+        [StringLength(20, MinimumLength = 8, ErrorMessage = "Please provide a password with a minimum length of 8")]
         public string Password { get; set; }
 
-        //[Required(ErrorMessage = "Please supply a password")]
-        //[StringLength(20, MinimumLength = 8)]
-        //public string ConfirmPassword { get; set; }
+        [Required(ErrorMessage = "Please supply a password")]
+        [StringLength(20, MinimumLength = 8, ErrorMessage = "Please provide a password with a minimum length of 8")]
+        [Compare("Password", ErrorMessage = "Passwords do not match")]   //TODO implement compare
+        public string ConfirmPassword { get; set; }
+
 
         [Required(ErrorMessage = "Please supply your Birth Date")]
         [DataType(DataType.Date)] 
@@ -42,12 +45,14 @@ namespace Validation.Web.Models
 
         public RegistrationViewModel() { }
 
-        public RegistrationViewModel(string firstName, string lastName, string email, string password, DateTime birthDate, int numberOfTickets)
+        public RegistrationViewModel(string firstName, string lastName, string email, string confirmEmail, string password, string confirmPassword, DateTime birthDate, int numberOfTickets)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
+            ConfirmEmail = confirmEmail;
             Password = password;
+            ConfirmPassword = confirmPassword;
             BirthDate = birthDate;
             NumberOfTickets = numberOfTickets;
         }

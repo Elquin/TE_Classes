@@ -56,6 +56,7 @@ namespace Forms.Web.Controllers
             // TODO 07: Check model state before updating. If there are errors, return the form to the user.
             if (!ModelState.IsValid)
             {
+                ViewData["message"] = "Please try again. You messed up";
                 return View(city);
             }
             // Use the DAO to add a city
@@ -67,6 +68,7 @@ namespace Forms.Web.Controllers
             // TODO 03: Change from ViewData to TempData (here and in Layout, and above).
 
             // TODO 02a: Redirect to the search page
+            ViewData["message"] = $"Your city called {city.Name} was added. The Id was {city.CityId}.";
             return RedirectToAction("ConfirmAdd");
         }
 

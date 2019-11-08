@@ -22,7 +22,6 @@ namespace Post.Web.Models
             Rating = rating;
             ReviewTitle = reviewTitle;
             ReviewText = reviewText;
-            //ReviewDate = reviewDate;
         }
     }
 }
