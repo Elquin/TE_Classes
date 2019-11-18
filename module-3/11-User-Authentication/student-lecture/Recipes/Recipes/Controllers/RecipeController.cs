@@ -72,6 +72,7 @@ namespace Recipes.Controllers
 
         // TODO: You can only Add a recipe if you are logged in
         [HttpGet]
+        [Authorize]
         public IActionResult Add()
         {
             // Get any recipe in-progress

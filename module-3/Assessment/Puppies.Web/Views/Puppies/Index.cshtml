@@ -12,21 +12,34 @@
         <th>Gender</th>
         <th>Paper Trained?</th>
     </tr>
+    @foreach (Puppy puppy in Model)
+    {
+        <tr>
+            <td>
+                <a href="~/Puppies/Detail/@puppy.Id">@puppy.Name</a>
+            </td>
+            <td>
+                @puppy.Weight lbs
+            </td>
+            <td>
+                @puppy.Gender
+            </td>
+            <td>
+                @{ 
+                    if (@puppy.PaperTrained)
+                    {
+                        <p>Yes</p>
+                    }
+                    else
+                    {
+                        <p>No</p>
+                    }
+                }
+                
+            </td>
+        </tr>
+    }
 
-    <tr>
-        <td>
-            Example Name
-        </td>
-        <td>
-            0 lbs
-        </td>
-        <td>
-            Example
-        </td>
-        <td>
-            Maybe
-        </td>
-    </tr>
 
 </table>
 <fieldset>

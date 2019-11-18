@@ -76,6 +76,7 @@ namespace Recipes.Controllers
         }
 
         // TODO: Protect the Admin page for only Authorized Admins
+        [Authorize("Admin")]
         public IActionResult Admin()
         {
             return View();
