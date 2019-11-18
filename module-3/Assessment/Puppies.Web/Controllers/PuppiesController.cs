@@ -18,12 +18,14 @@ namespace Puppies.Web.Controllers
             this.puppyDao = puppyDao;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             IList<Puppy> puppies = puppyDao.GetPuppies();
             return View(puppies);
         }
 
+        [HttpGet]
         public IActionResult Detail(int id)
         {
             Puppy puppy = puppyDao.GetPuppy(id);
