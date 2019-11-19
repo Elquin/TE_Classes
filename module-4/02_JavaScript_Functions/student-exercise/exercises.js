@@ -40,6 +40,18 @@ function isSummer(month, day = 1, hemisphere = 'northern') {
  * @param {boolean} [recommendation=false] does the student have a recommendation
  * @returns {boolean} true if they are admitted
  */
+function isAdmitted(gpa, satScore, recommendation){
+  if(satScore > 1200 && recommendation || gpa > 3.0 && recommendation){
+    return true;
+  }
+  else if(satScore > 1300 || gpa > 4.0){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 
 /**
  * Write a function called useParameterToFilterArray so that it takes an anonymous
@@ -49,6 +61,10 @@ function isSummer(month, day = 1, hemisphere = 'northern') {
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(filterFunction){
+  return (unfilteredArray.filterFunction);
+}
 
 /**
  * Write a function called makeNumber to take two strings
@@ -62,6 +78,10 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+
+ function makeNumber (string1, string2){
+   return string1parseInt(string1, 10) + string1parseInt(string2,10);
+ }
 
 /**
  * Write a function called addAll that takes an unknown number of parameters

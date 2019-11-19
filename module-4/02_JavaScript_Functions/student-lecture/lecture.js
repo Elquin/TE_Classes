@@ -95,40 +95,43 @@ function doubleIt(n){
 console.log(`doubleIt is a type ${typeof(doubleIt)}`);
 console.log(doubleIt.name);
 
-/************************
- * Now that the function is defined, we can actually "assign" that function to 
- * another variable.
- */
+// /************************
+//  * Now that the function is defined, we can actually "assign" that function to 
+//  * another variable.
+//  */
 let f = doubleIt; // f is now a function
 console.log(`f is a type ${typeof(f)}`);
 console.log(f.name);
 
-/*****************************
- * Another way to define a function - assign it to a variable directly
- * 
- */
+// /*****************************
+//  * Another way to define a function - assign it to a variable directly
+//  * 
+//  */
 let tripleIt = function (n) {
   return n * 3;
 }
 
-/*******************************
- * And finally, a shortcut for the above using lambda (fat arrow)
- * 
- */
+console.log(`tripleIt is a type ${typeof(tripleIt)}`);
+console.log(tripleIt.name);
+
+// /*******************************
+//  * And finally, a shortcut for the above using lambda (fat arrow)
+//  * 
+//  */
 let quadrupleIt = (n) => {return n*4;}
 
-/************************************
- * You may even see a shorter-cut, called an expression-bodied function
- * but I won't use it normally
- */
+// /************************************
+//  * You may even see a shorter-cut, called an expression-bodied function
+//  * but I won't use it normally
+//  */
 let quintupleIt = n => n*5;
 console.log(quintupleIt.name);
 console.log(quintupleIt);
 
-/************************************
- * Now we can write a function, which takes another function as a parameter.
- * The passed-in function can be called (executed / invoked).
- */
+// /************************************
+//  * Now we can write a function, which takes another function as a parameter.
+//  * The passed-in function can be called (executed / invoked).
+//  */
 function toAllElements(array, functionToApply){
   let outArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -136,6 +139,10 @@ function toAllElements(array, functionToApply){
   }
   return outArray;
 }
+
+
+//without naming function, execute defined function inline.
+toAllElements(myArray, (e) => {return e / 2;})
 
 /***********************************
  * Define an array of numbers
@@ -162,7 +169,11 @@ let myArray = [1,2,3,4,5];
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce(
+    (sum, element) => {
+      return sum + element;
+    }
+  );
 }
 
 /**
@@ -173,7 +184,20 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+  let outArr = numbersToFilter.filter((element) => {
+    return element % 3 === 0;
+  });
+  return outArr;
+}
 
 
+function sortNumbers(array){
+  return array.sort(
+    (a,b) => {
+      return a-b;
+    }
+  );
+}
 
+let numbers = [10, 4, 1, 123, 56, 43];

@@ -54,16 +54,22 @@ function lastDigit(x, y){
 		seeColor("xxred") → ""
         seeColor("blueTimes") → "blue"
 */
-function seeColor(x){
-	if(x[0].toLowerCase() === "r" && x[1].toLowerCase() === "e" && x[2].toLowerCase() === "d"){
-		return "red";
-	} else if(x[0].toLowerCase() === "b" && x[1].toLowerCase() === "l" && x[2].toLowerCase() === "u" && x[3].toLowerCase() === "e"){
-			return "blue";
-		} else{
-			return "";
-		}
-		
-	}
+word = string;
+function seeColor(word)
+{
+    red = "red";
+    blue = "blue";
+
+    if (word.substring(0,3)== red)
+    {
+        return red;
+    }
+    if (word.substring(0,4)== blue)
+    {
+        return blue;
+    }
+    return "";
+}
 
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, filters out 
@@ -91,13 +97,13 @@ function oddOnly(x){
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
-function frontAgain(x){
-	if(x[0] + x[1] === x.substring[x.length-2]){
-		return true;
-	}
-	else{
-		return false;
-	}
+function frontAgain(str)
+{
+    if (str.substring(0,2) == str.substring(str.length-2,str.length))
+    {
+        return true;
+    }
+    return false;
 }
 
 /*
@@ -212,10 +218,12 @@ firstName, lastName, and age. Populate the properties with your values.
 	}
 */
 
-function createObject() {
-	const person = {
-	  firstName: "Robert",
-	  lastName: "Holland",
-	  age: 32,
-	};
+function createObject()
+{
+const person = {
+firstName: "Robert",
+lastName: "Holland",
+age: 32,
+}
+return person;
 }
