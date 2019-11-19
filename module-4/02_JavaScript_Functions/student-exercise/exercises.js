@@ -1,6 +1,13 @@
 /*
  * Document this function
  */
+/**
+ * @function isSummer determines which hemisphere is experiencing summer given the month, day and hemisphere.
+ * @param {string} month 
+ * @param {int} day 
+ * @param {string} hemisphere 
+ * @returns the hemisphere experiencing summer based on month and day.
+ */
 function isSummer(month, day = 1, hemisphere = 'northern') {
   if (month === 7 || month === 8) {
     return hemisphere === 'northern';
@@ -62,8 +69,9 @@ function isAdmitted(gpa, satScore, recommendation){
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
-function useParameterToFilterArray(filterFunction){
-  return (unfilteredArray.filterFunction);
+function useParameterToFilterArray(f)
+{
+  return unfilteredArray.filter(f);
 }
 
 /**
@@ -80,7 +88,7 @@ function useParameterToFilterArray(filterFunction){
  */
 
  function makeNumber (string1, string2){
-   return string1parseInt(string1, 10) + string1parseInt(string2,10);
+   return parseInt(string1 + string2, 10);
  }
 
 /**
@@ -91,11 +99,29 @@ function useParameterToFilterArray(filterFunction){
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+ function addAll (){
+   sum = 0;
+   for(let i = 0; i < arguments.length; i++){
+    sum += arguments[i];
+   }
+   return sum;
+ }
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+/**
+ * function makeHappy that takes a
+ * @param {[]} array and
+ * @returns an array with the prepended string 'Happy ' to each element.
+ * Uses the .map() function to go through each element and concatenates 'Happy ' to each.
+ */
+
+ function makeHappy(array){
+   return array.map(i => 'Happy ' + i);
+ }
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -115,12 +141,36 @@ function useParameterToFilterArray(filterFunction){
  * Use `map` and an anonymous function.
  */
 
+ function getFullAddressesOfProperties(array){
+     return array.map(i => i[Object['streetNumber']] + i[Object['streetName']] + i[Object['streetType']] + i[Object['city']] + i[Object['state']] + i[Object['zip']]);
+ }
+
 /*
  * Create and document a function called findLargest.
  *
  * Using `forEach`, find the largest element in an array.
  * It should work for strings and numbers.
  */
+
+ /**
+  * Function to find largest number or letter. Takes an
+  * @param {string or numbers} array 
+  * initializes largest to 0 to begin at lowest example.
+  * @method forEach is called on array and is called on each element
+  * to find whether the current element is less than elem. If True
+  * largest is assigned elem, since elem is still largest. If the 
+  * array is iterated through completely, the findLargest function
+  * @returns largest.
+  */
+
+ function findLargest(array){
+   largest = 0;
+   array.forEach(function(elem){
+     if(largest < elem)
+     largest = elem;
+   });
+   return largest;
+ }
 
 /*
  * CHALLENGE
