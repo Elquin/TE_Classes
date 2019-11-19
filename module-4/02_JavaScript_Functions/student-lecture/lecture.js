@@ -1,3 +1,8 @@
+//Join elements of an array into a string
+let names = ["Reid", "Glenn", "Brad"];
+console.log(names.join(", "));
+
+
 /**
  * All named functions will have the function keyword and
  * a name followed by parentheses.
@@ -26,6 +31,9 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function multiplyTogether(x, y){
+  return x * y;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -37,6 +45,9 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+function multiplyNoUndefined(x = 0, y = 0){
+  return x * y;
+}
 
 /**
  * Scope is defined as where a variable is available to be used.

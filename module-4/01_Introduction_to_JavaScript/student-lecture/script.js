@@ -10,8 +10,46 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const DAYS_IN_WEEK = 7;
+  console.log('There are ' + DAYS_IN_WEEK + ' days in the week');
+
+  //The Beatles say...
+  //DAYS_IN_WEEK++; //cannot do this! CONST
+  
   // Declares a variable those value can be changed
+  let name;
+  console.log(`The name is ${name}`);
+  name = "Steve";
+  console.log(`The name is ${name}`);
+  name = 52;
+  console.log(`The name is ${name}`);
+
   // Declares a variable that will always be an array
+}
+
+function arrays() {
+  //declare an empty array
+  let junk = [];
+
+  //Assign values to elements
+  junk[0] = 'Robert';
+  junk[2] = 'Josh';
+
+  junk[3] = {
+    name: 'Josh',
+    age: 35,
+    height: 84,
+  }
+
+  junk[10] = 1000;
+
+  for(let i = 0; i < junk.length; i++){
+    console.log(junk[i]);
+  }
+
+  // console.log(junk[1]);
+  // console.log(junk.length);
+  // console.table(junk);
 }
 
 /**
@@ -74,10 +112,14 @@ function objects() {
   };
 
   // Log the object
+  console.log(person);
 
   // Log the first and last name
 
   // Log each employee
+
+  //Call the add function
+  let x = add()
 }
 
 /*
@@ -90,11 +132,17 @@ function with the same name, more than one time in a script file, the
 earlier ones are overriden and the most recent one will be used.
 */
 
-function Add(num1, num2) {
+
+/**
+ * This function adds two numbers together
+ * @param {Number} num1 
+ * @param {Number} num2 
+ */
+function add(num1, num2) {
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
+function add(num1, num2, num3) {
   return num1 + num2 + num3;
 }
 
