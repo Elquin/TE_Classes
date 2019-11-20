@@ -164,7 +164,7 @@ function useParameterToFilterArray(f)
   */
 
  function findLargest(array){
-   largest = 0;
+   let largest = "";
    array.forEach(function(elem){
      if(largest < elem)
      largest = elem;
