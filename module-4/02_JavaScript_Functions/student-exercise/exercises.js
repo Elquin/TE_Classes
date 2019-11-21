@@ -88,7 +88,7 @@ function useParameterToFilterArray(f)
  */
 
  function makeNumber (string1, string2){
-   return parseInt(string1 + string2, 10);
+   return parseInt(string1 + string2);
  }
 
 /**
@@ -141,9 +141,11 @@ function useParameterToFilterArray(f)
  * Use `map` and an anonymous function.
  */
 
- function getFullAddressesOfProperties(array){
-     return array.map(i => i[Object['streetNumber']] + i[Object['streetName']] + i[Object['streetType']] + i[Object['city']] + i[Object['state']] + i[Object['zip']]);
- }
+function getFullAddressesOfProperties(addresses){
+  return addresses.map(
+  (address => address.streetNumber+' '+address.streetName+' '+address.streetType+' '+address.city+' '+address.state+' '+address.zip))
+  
+  }
 
 /*
  * Create and document a function called findLargest.
