@@ -1,17 +1,18 @@
-let allItemsIncomplete = true;
-const pageTitle = 'My Shopping List';
-const groceries = [
-  { id: 1, name: 'Oatmeal', completed: false },
-  { id: 2, name: 'Milk', completed: false },
-  { id: 3, name: 'Banana', completed: false },
-  { id: 4, name: 'Strawberries', completed: false },
-  { id: 5, name: 'Lunch Meat', completed: false },
-  { id: 6, name: 'Bread', completed: false },
-  { id: 7, name: 'Grapes', completed: false },
-  { id: 8, name: 'Steak', completed: false },
-  { id: 9, name: 'Salad', completed: false },
-  { id: 10, name: 'Tea', completed: false }
-];
+  let allItemsIncomplete = true;
+  const pageTitle = 'My Shopping List';
+  const groceries = [
+    { id: 1, name: 'Oatmeal', completed: false },
+    { id: 2, name: 'Milk', completed: false },
+    { id: 3, name: 'Banana', completed: false },
+    { id: 4, name: 'Strawberries', completed: false },
+    { id: 5, name: 'Lunch Meat', completed: false },
+    { id: 6, name: 'Bread', completed: false },
+    { id: 7, name: 'Grapes', completed: false },
+    { id: 8, name: 'Steak', completed: false },
+    { id: 9, name: 'Salad', completed: false },
+    { id: 10, name: 'Tea', completed: false }
+  ];
+
 
 /**
  * This function will get a reference to the title and set its text to the value
@@ -37,5 +38,43 @@ function displayGroceries() {
   });
 }
 
+/**
+ * This function will be called when the button is clicked. You will need to get a reference
+ * to every list item and add the class completed to each one
+ */
+
 setPageTitle();
 displayGroceries();
+
+
+const tasks = document.querySelectorAll('li');
+const button = document.querySelectorAll('#toggleAll');
+
+  tasks.forEach((task) => {
+    // when you click on a task mark it completed
+    task.addEventListener('click', () => {
+      if (!task.classList.contains('completed')) {
+        task.classList.add('completed');
+        task.querySelector('i').classList.add('completed');
+      } 
+      else if (task.classList.contains('completed')) {
+        task.classList.remove('completed');
+        task.querySelector('i').classList.remove('completed');
+      }
+    });
+  });
+
+  // mark all tasks as completed
+  const completeAll = document.getElementById('toggleAll');
+  completeAll.addEventListener('click', () => {
+    tasks.forEach((task) => {
+      if (!task.classList.contains('completed')) {
+        task.classList.add('completed');
+        task.querySelector('i').classList.add('completed');
+      }
+      else if (task.classList.contains('completed')) {
+        task.classList.remove('completed');
+        task.querySelector('i').classList.remove('completed');
+      }
+    });
+  });

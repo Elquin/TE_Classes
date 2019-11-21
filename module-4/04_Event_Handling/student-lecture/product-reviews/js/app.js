@@ -59,13 +59,55 @@ function displayReview(review) {
 }
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', initializePage);
 
+function initializePage(){
 // set the product reviews page title
 setPageTitle();
 // set the product reviews page description
 setPageDescription();
 // display all of the product reviews on our page
 displayReviews();
+
+//add a click event listener for the p.description
+const desc = document.querySelector('p.description');
+desc.addEventListener('click', (ev) => {
+  toggleDescriptionEdit(ev.target);
+});
+
+//add listener for when the edit box loses focus
+const inputDesc = document.getElementById('inputDesc');
+inputDesc.addEventListener('blur', (ev) => {
+  exitDescriptionEdit(ev.target, false);
+});
+
+//add a listener for the keyboard. If Enter, then save, if Esc, then exit without saving.
+inputDesc.addEventListener('keyup', (ev) => {
+  if (ev.key === 'Enter'){
+    exitDescriptionEdit(ev.target, true);
+  }
+  if (ev.key === 'Escape'){
+    exitDescriptionEdit(ev.target, false);
+  }
+  
+});
+
+//show or hide the form when the user clicks
+const  buttonToggle = document.getElementById('btnToggleForm');
+buttonToggle.addEventListener('click', (ev) =>{
+  showHideForm();
+});
+
+
+//Handle Save Review button to save data
+const buttonSave = document.getElementById('btnSaveReview');
+buttonSave.addEventListener('click', (ev) => {
+  saveReview();
+  ev.preventDefault();
+});
+
+}
+
 
 /**
  * Take an event on the description and swap out the description for a text box.
@@ -131,4 +173,18 @@ function resetFormValues() {
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview() {
+//grab data from the form and add it to a new review
+
+const newReview = {
+  reviewer: document.getElementById('name').value,
+  title: document.getElementById('title').value,
+  review: document.getElementById('review').value,
+  rating: document.getElementById('rating').value,
+}
+
+//add the review to the front of the reviews list
+reviews.unshift(newReview);
+displayReview(newReview);
+showHideForm();
+}

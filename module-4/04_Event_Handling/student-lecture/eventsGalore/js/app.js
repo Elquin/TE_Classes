@@ -2,11 +2,12 @@ let eventCounter = 0;
 
 // TODO: What happens if we move the <script> tag in the html file to near the top of the document.
 // TODO: Don't subscribe to events until the DOM has been fully loaded
-  subscribeToMouseEvents();
+document.addEventListener('DOMContentLoaded', () => {
+  //subscribeToMouseEvents();
   subscribeToOtherEvents();
-
-  // TODO: Turn on the form
   subscribeToFormEvents();
+});
+  
 
 function subscribeToOtherEvents() {
   document.getElementById('heading1').addEventListener('click', (e) => {
@@ -56,7 +57,7 @@ function subscribeToMouseEvents(element) {
 function HandleMouseEvent(mouseEvent) {
   eventCounter++;
   // TODO: Stop Propagation to see what happens to the events
-
+  mouseEvent.stopPropagation();
   console.log(
     `${eventCounter}:${mouseEvent.type} occurred on: ${mouseEvent.target.tagName}#${mouseEvent.target.id}, handled by: ${mouseEvent.currentTarget.tagName}#${mouseEvent.currentTarget.id} at (${mouseEvent.clientX}, ${mouseEvent.clientY})`);
 }
@@ -116,6 +117,7 @@ function subscribeToFormEvents(){
       `Do something with { ${document.getElementById('name').value},${document.getElementById('title').value},${document.getElementById('state').value} }`;
 
       // TODO: We better prevent the default behavior here, or the form will get submitted!
+      e.preventDefault();
     }
   );
 
