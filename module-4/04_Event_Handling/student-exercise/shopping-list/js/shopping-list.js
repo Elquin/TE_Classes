@@ -56,8 +56,13 @@ const button = document.querySelectorAll('#toggleAll');
       if (!task.classList.contains('completed')) {
         task.classList.add('completed');
         task.querySelector('i').classList.add('completed');
-      } 
-      else if (task.classList.contains('completed')) {
+      }
+    });
+  
+
+    // when you double click a task remove the completed class
+    task.addEventListener('dblclick', () => {
+      if (task.classList.contains('completed')) {
         task.classList.remove('completed');
         task.querySelector('i').classList.remove('completed');
       }
