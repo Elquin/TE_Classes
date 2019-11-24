@@ -23,4 +23,13 @@ fetch('assets/data/shopping-list.json')
 
 
 
-  
+//   const button = document.getElementsByClassName('loadingButton');
+
+//   button.forEach((element) =>{
+//     element.addEventListener('click', () => {
+             
+        
+
+
+//     });
+//   });
