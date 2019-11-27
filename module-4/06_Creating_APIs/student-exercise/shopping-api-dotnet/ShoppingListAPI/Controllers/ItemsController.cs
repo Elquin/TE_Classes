@@ -11,11 +11,11 @@ namespace ShoppingListAPI.Controllers
 {
     [Route("api/groceries")]
     [ApiController]
-    public class ItemController : ControllerBase
+    public class ItemsController : ControllerBase
     {
-        private DataAccessObject dao;
+        private IDataAccessObject<Item> dao;
 
-        public ItemController(DataAccessObject dao)
+        public ItemsController(IDataAccessObject<Item> dao)
         {
             this.dao = dao;
         }
@@ -69,8 +69,8 @@ namespace ShoppingListAPI.Controllers
             }
 
             //Copy over the fields we want to update
-            existingItem.name = item.name;
-            existingItem.completed = item.completed;
+            existingItem.Name = item.Name;
+            existingItem.Completed = item.Completed;
 
             //Save existing review back
             dao.Update(item);
