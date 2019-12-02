@@ -7,7 +7,7 @@
 <script>
 import TodoList from './components/TodoList';
 
-export default {
+export default { 
   name: 'app',
   components: {
     TodoList
