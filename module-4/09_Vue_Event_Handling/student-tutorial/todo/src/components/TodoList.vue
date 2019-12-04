@@ -14,6 +14,10 @@
 export default {
 
     methods: {
+
+    changeStatus() {
+        
+    },
     changeStatus(id) {
         const arrIndex = this.todos.findIndex((todo) => todo.id == id);
         this.todos[arrIndex].completed = !this.todos[arrIndex].completed;
