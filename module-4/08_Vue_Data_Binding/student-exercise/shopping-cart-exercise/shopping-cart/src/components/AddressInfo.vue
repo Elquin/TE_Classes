@@ -90,6 +90,7 @@
               <input
                 class="form-check-input"
                 type="checkbox"
+                v-mod="billingSameAsShipping"
                 id="billingSameCheckbox"
                 :checked="billingSameAsShipping"
                 v-on:change="updateBilling"
@@ -230,7 +231,19 @@ export default {
       console.log('I am called when the checkbox "Billing same as shipping" is checked or unchecked.');
       this.billingSameAsShipping = !this.billingSameAsShipping;
       // if billingSameAsShipping set billing equal to shipping
-
+      if(this.billingSameAsShipping){
+        this.billing.address = this.shipping.address;
+        this.billing.address2 = this.shipping.address2;
+        this.billing.city = this.shipping.city;
+        this.billing.state = this.shipping.state;
+        this.billing.zip = this.shipping.zip;
+      } else {
+          this.billing.address = '';
+          this.billing.address2 = '';
+          this.billing.city = '';
+          this.billing.state = '';
+          this.billing.zip = '';
+      }
       // else clear all the billing address fields
     },
     clearBillingAddress() {
