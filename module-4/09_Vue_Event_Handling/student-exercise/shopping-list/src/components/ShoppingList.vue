@@ -2,8 +2,8 @@
     <div class="shopping-list">
         <h1>My Shopping List</h1>
         <ul>
-            <li v-for="item in groceries" v-bind:key="item.id" v-bind:class="{ completed: item.completed }">
-                <input type="checkbox" v-on:click="changeStatus(item.id)"/>
+            <li v-on:click="changeStatus(item.id)" v-for="item in groceries" v-bind:key="item.id" v-bind:class="{ completed: item.completed }">
+                <input type="checkbox"/>
                 {{item.name}} 
                 <i class="far fa-check-circle" v-bind:class="{ completed: item.completed }"></i>
             </li>
