@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <todo-search></todo-search>
-    <todo-list title="My Work Todo's" v-bind:todos="work"></todo-list>
-    <todo-list title="My Personal Todo's" v-bind:todos="personal"></todo-list>
-    <todo-list title="My Household Todo's" v-bind:todos="household"></todo-list>
+    <todo-search v-on:filter-tasks="handleSearch"></todo-search>
+    <todo-list title="My Work Todo's" v-bind:todos="work" v-bind:search="search" ></todo-list>
+    <todo-list title="My Personal Todo's" v-bind:todos="personal" v-bind:search="search" ></todo-list>
+    <todo-list title="My Household Todo's" v-bind:todos="household" v-bind:search="search" ></todo-list>
   </div>
 </template>
 
@@ -19,37 +19,17 @@ export default {
   },
   data() {
     return {
-      work: [
-        { id: 1, task: 'Create new presentation', completed: false },
-        { id: 2, task: 'Add slides to presentation', completed: false },
-        { id: 3, task: 'Add images to presentation', completed: false },
-        { id: 4, task: 'Add FAQ', completed: false },
-        { id: 5, task: 'Add Branded colors to presentation', completed: false },
-        { id: 6, task: 'Add About Me Slide', completed: false },
-        { id: 7, task: 'Finish presentation', completed: false }
-      ],
-      personal: [
-        { id: 1, task: 'Pick up dry cleaning', completed: false },
-        { id: 2, task: 'Grocery Shopping', completed: false },
-        { id: 3, task: 'Fill up gas tank', completed: false },
-        { id: 4, task: 'Get both cars washed', completed: false },
-        { id: 5, task: 'Do laundry', completed: false },
-        { id: 6, task: 'Plan party', completed: false },
-        { id: 7, task: 'Vacume entire house', completed: false }
-      ],
-      household: [
-        { id: 1, task: 'Clean up yard', completed: false },
-        { id: 2, task: 'Get chimney cleaned', completed: false },
-        { id: 3, task: 'New Carpet for entire house', completed: false },
-        { id: 4, task: 'New bathtub', completed: false },
-        { id: 5, task: 'Paint office', completed: false },
-        { id: 6, task: 'Install new TV downstairs', completed: false },
-        { id: 7, task: 'New carpet in the sunroom', completed: false }
-      ],
+      search: '',
+      work: [],
+      personal: [],
+      household: []
     }
   },
   methods: {
-
+      handleSearch(query) {
+          console.log('Filter Tasks: ', query);
+          this.search = query;
+      }
   }
 }
 </script>

@@ -3,7 +3,7 @@
         <h1>My Shopping List</h1>
         <ul>
             <li v-on:click="changeStatus(item.id)" v-for="item in groceries" v-bind:key="item.id" v-bind:class="{ completed: item.completed }">
-                <input type="checkbox"/>
+                <input v-model="item.completed" type="checkbox"/>
                 {{item.name}} 
                 <i class="far fa-check-circle" v-bind:class="{ completed: item.completed }"></i>
             </li>
@@ -29,9 +29,6 @@ export default {
         }
     },
     methods: {
-        changeStatus() {
-        
-        },
         changeStatus(id) {
             const arrIndex = this.groceries.findIndex((item) => item.id == id);
             this.groceries[arrIndex].completed = !this.groceries[arrIndex].completed;

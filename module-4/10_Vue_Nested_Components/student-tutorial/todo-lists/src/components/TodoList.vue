@@ -2,7 +2,7 @@
     <div class="todo-list">
         <h1>{{this.title}}</h1>
         <ul>
-            <li v-for="todo in todos" 
+            <li v-for="todo in filteredTasks" 
                 v-bind:key="todo.id" 
                 v-bind:class="{'todo-completed': todo.completed}" 
                 v-on:click="changeStatus(todo.id, $event)">
@@ -20,6 +20,12 @@ export default {
         search: String,
         todos: Array
     },
+    computed: {
+        filteredTasks() {
+            const filter = new RegExp(this.search,'i');
+            return this.todos.filter(todo => todo.task.match(filter));
+        }
+    },
     methods: {
         changeStatus(id,event) {
             const arrIndex = this.todos.findIndex((todo) => todo.id == id);
@@ -31,7 +37,8 @@ export default {
                 checkbox.checked = !checkbox.checked;
             }
         }
-    }
+    },
+    
 }
 </script>
 
