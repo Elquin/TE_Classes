@@ -248,6 +248,11 @@ export default {
     },
     clearBillingAddress() {
       // clear the billing address fields
+          this.billing.address = '';
+          this.billing.address2 = '';
+          this.billing.city = '';
+          this.billing.state = '';
+          this.billing.zip = '';
     }
   }
 };
