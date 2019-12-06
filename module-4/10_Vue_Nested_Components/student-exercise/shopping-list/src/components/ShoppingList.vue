@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    //name: 'shopping-list',
+    name: 'shopping-list',
     props: {
         title: String,
         search: String,
