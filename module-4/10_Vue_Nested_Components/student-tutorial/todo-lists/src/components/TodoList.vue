@@ -1,10 +1,10 @@
 <template>
     <div class="todo-list">
-        <h1>{{this.title}}</h1>
+    <h1>{{this.title}}</h1>
         <ul>
-            <li v-for="todo in filteredTasks" 
-                v-bind:key="todo.id" 
-                v-bind:class="{'todo-completed': todo.completed}" 
+            <li v-for="todo in filteredTasks"
+                v-bind:key="todo.id"
+                v-bind:class="{'todo-completed': todo.completed}"
                 v-on:click="changeStatus(todo.id, $event)">
                 <input type="checkbox"/>
                 {{todo.task}} <i class="far fa-check-circle" v-bind:class="{completed: todo.completed}"></i>
@@ -19,26 +19,25 @@ export default {
         title: String,
         search: String,
         todos: Array
-    },
-    computed: {
-        filteredTasks() {
-            const filter = new RegExp(this.search,'i');
-            return this.todos.filter(todo => todo.task.match(filter));
+},
+methods: {
+changeStatus(id,event) {
+const arrIndex = this.todos.findIndex((todo) => todo.id == id);
+this.todos[arrIndex].completed = !this.todos[arrIndex].completed;
+
+        // the checkbox might not have been target of the click event
+        if( event.target.type != 'checkbox' ) {
+            const checkbox = event.target.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
         }
-    },
-    methods: {
-        changeStatus(id,event) {
-            const arrIndex = this.todos.findIndex((todo) => todo.id == id);
-            this.todos[arrIndex].completed = !this.todos[arrIndex].completed;
-           
-            // the checkbox might not have been target of the click event
-            if( event.target.type != 'checkbox' ) {
-                const checkbox = event.target.querySelector('input[type="checkbox"]');
-                checkbox.checked = !checkbox.checked;
-            }
-        }
-    },
-    
+    }
+},
+computed: {
+    filteredTasks() {
+        const filter = new RegExp(this.search, 'i');
+        return this.todos.filter(todo => todo.task.match(filter));
+    }
+}
 }
 </script>
 
@@ -80,7 +79,7 @@ li.todo-completed {
     text-decoration: line-through;
     color: darkgray;
 }
-i.far.fa-check-circle { 
+i.far.fa-check-circle {
     float:right;
     color: darkgray;
 }
