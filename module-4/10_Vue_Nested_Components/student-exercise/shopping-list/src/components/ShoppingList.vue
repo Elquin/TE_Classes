@@ -1,14 +1,13 @@
 <template>
     <div class="shopping-list">
-        <h2>{{title}}</h2>
+        <h2>{{this.title}}</h2>
         <ul>
-            <li v-for="item in data" 
-                v-bind:key="item.id" 
-                v-bind:class="{ completed: item.completed }" 
-                v-on:click="changeStatus(item.id,$event)">
+            <li v-for="item in filteredTasks"
+                v-bind:key="item.id"
+                v-bind:class="{'item-completed': item.completed}"
+                v-on:click="changeStatus(item.id, $event)">
                 <input type="checkbox"/>
-                {{item.name}} 
-                <i class="far fa-check-circle" v-bind:class="{ completed: item.completed }"></i>
+                {{item.name}} <i class="far fa-check-circle" v-bind:class="{completed: item.completed}"></i>
             </li>
         </ul>
     </div>
@@ -16,30 +15,29 @@
 
 <script>
 export default {
-    name: 'shopping-list',
+    //name: 'shopping-list',
     props: {
-
-    },
-    data() {
-        return {
-            
-        }
+        title: String,
+        search: String,
+        items: Array
     },
     methods: {
-        changeStatus(id,event) {
-            const arrIndex = this.data.findIndex((item) => item.id == id);
-            this.data[arrIndex].completed = !this.data[arrIndex].completed;
-            
-            // the checkbox might not have been target of the click event
-            if( event.target.type != 'checkbox' ) {
-                const checkbox = event.target.querySelector('input[type="checkbox"]');
-                checkbox.checked = !checkbox.checked;
-            }
-        }
-    },
-    computed: {
+    changeStatus(id,event) {
+    const arrIndex = this.items.findIndex((item) => item.id == id);
+    this.items[arrIndex].completed = !this.items[arrIndex].completed;
 
+        if( event.target.type != 'checkbox' ) {
+            const checkbox = event.target.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+        }
     }
+},
+    computed: {
+    filteredTasks() {
+        const filter = new RegExp(this.search, 'i');
+        return this.items.filter(item => item.name.match(filter));
+    }
+}
 }
 </script>
 

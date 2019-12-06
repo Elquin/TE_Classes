@@ -10,7 +10,7 @@
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td>{{user.username}}</td>
+          <td><router-link v-bind:to="{name: 'user', params: {id: user.id}}">{{user.username}}</router-link></td>
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
         </tr>

@@ -14,10 +14,10 @@ export default {
   data() {
     return {
       departments: [
-        { path: '/produce', banner: 'produce_banner.png', class: 'department produce' },
-        { path: '/dairy', banner: 'dairy_banner.png', class: 'department dairy' },
-        { path: '/meat', banner: 'meat_banner.png', class: 'department meat' },
-        { path: '/bakery', banner: 'bakery_banner.png', class: 'department bakery' }
+        { path: '/produce', banner: 'produce_banner.png', class: 'produce' },
+        { path: '/dairy', banner: 'dairy_banner.png', class: 'dairy' },
+        { path: '/meat', banner: 'meat_banner.png', class: 'meat' },
+        { path: '/bakery', banner: 'bakery_banner.png', class: 'bakery' }
       ]
     }
   }
