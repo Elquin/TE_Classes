@@ -4,7 +4,7 @@
         <ul>
             <li v-for="item in filteredTasks"
                 v-bind:key="item.id"
-                v-bind:class="{'item-completed': item.completed}"
+                v-bind:class="{'completed': item.completed}"
                 v-on:click="changeStatus(item.id, $event)">
                 <input type="checkbox"/>
                 {{item.name}} <i class="far fa-check-circle" v-bind:class="{completed: item.completed}"></i>
